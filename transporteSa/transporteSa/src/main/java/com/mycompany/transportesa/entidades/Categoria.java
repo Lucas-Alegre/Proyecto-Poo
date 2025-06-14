@@ -24,5 +24,6 @@ public class Categoria {
     public String toString() {
         return "Categoria{" + "categoria=" + categoria + '}';
     }
+    //pruebo cambio desde netbeans
     
 }
