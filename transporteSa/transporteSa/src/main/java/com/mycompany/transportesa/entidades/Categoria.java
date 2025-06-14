@@ -25,5 +25,6 @@ public class Categoria {
         return "Categoria{" + "categoria=" + categoria + '}';
     }
     //pruebo cambio desde netbeans
+    //segunda prieba
     
 }
