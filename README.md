@@ -5,11 +5,9 @@ Sistema de gestión de transporte de pasajeros, desarrollado con enfoque en **Pr
 ---
 
 ## 👥 Integrantes del grupo
-
-- Carolina Latour  
-- Lucas Alegre  
-- Benjamín Aquino  
-
+- Alegre Lucas
+- Aquino Benjamín 
+- Latour Carolina
 ---
 
 ## 🧱 Estructura del Proyecto
