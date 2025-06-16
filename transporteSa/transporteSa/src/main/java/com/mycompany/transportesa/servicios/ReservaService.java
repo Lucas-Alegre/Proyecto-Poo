@@ -5,7 +5,6 @@
 package com.mycompany.transportesa.servicios;
 
 import com.mycompany.transportesa.entidades.*;
-import com.mycompany.transportesa.exceptiones.CapacidadExcedidaException;
 
 /**
  *
@@ -17,11 +16,11 @@ public class ReservaService {
         return viaje.getPasajeros().size() < viaje.getVehiculo().getCapacidad();
     }
 
-    public void registrarReserva(Viaje viaje, Pasajero pasajero) throws CapacidadExcedidaException {
+    /*public void registrarReserva(Viaje viaje, Pasajero pasajero) throws CapacidadExcedidaException {
         if (validarCapacidadDisponible(viaje)) {
             viaje.agregarPasajeros(pasajero);
         } else {
             throw new CapacidadExcedidaException("No hay capacidad disponible en este viaje");
         }
-    }
+    }*/
 }

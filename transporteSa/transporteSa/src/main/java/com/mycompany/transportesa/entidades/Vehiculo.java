@@ -22,7 +22,7 @@ public abstract class Vehiculo {
         this.kilometraje=kilometraje;
     }
 
-    public String getpatente() {
+    public String getPatente() {
         return this.patente;
     }
 
@@ -53,6 +53,6 @@ public abstract class Vehiculo {
 
     @Override
     public String toString() {
-        return "Patente: " + getpatente() + ", Capacidad: " + getCapacidad() + ", Anio de Fabricación: " + getAnioFabricacion()+ ", Kilometraje: "+getKilometraje();
+        return "Patente: " + getPatente() + ", Capacidad: " + getCapacidad() + ", Anio de Fabricación: " + getAnioFabricacion()+ ", Kilometraje: "+getKilometraje();
     }
 }

@@ -10,12 +10,22 @@ package com.mycompany.transportesa.entidades;
  */
 public class ChoferCategoria {
 
+    private Chofer chofer;
     private Categoria categoria;
     private String fechaDeVencimiento;
 
-    public ChoferCategoria(Categoria categoria, String fechaDeVencimiento) {
+    public ChoferCategoria(Chofer chofer, Categoria categoria, String fechaDeVencimiento) {
+        this.chofer = chofer;
         this.categoria = categoria;
         this.fechaDeVencimiento = fechaDeVencimiento;
+    }
+
+    public Chofer getChofer() {
+        return chofer;
+    }
+
+    public void setChofer(Chofer chofer) {
+        this.chofer = chofer;
     }
 
     public Categoria getCategoria() {
@@ -36,7 +46,7 @@ public class ChoferCategoria {
 
     @Override
     public String toString() {
-        return "ChoferCategoria{" + "categoria=" + categoria + ", fechaDeVencimiento=" + fechaDeVencimiento + '}';
+        return "ChoferCategoria{" + "chofer=" + chofer + ", categoria=" + categoria + ", fechaDeVencimiento=" + fechaDeVencimiento + '}';
     }
     
 }
