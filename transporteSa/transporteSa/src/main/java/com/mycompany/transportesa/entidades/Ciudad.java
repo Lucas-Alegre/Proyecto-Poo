@@ -11,9 +11,9 @@ package com.mycompany.transportesa.entidades;
 public class Ciudad {
 
     private String nombre;
-    private Provincia provincia;
+    private ProvinciaEnum provincia;
 
-    public Ciudad(String nombre, Provincia provincia) {
+    public Ciudad(String nombre, ProvinciaEnum provincia) {
         this.nombre = nombre;
         this.provincia = provincia;
     }
@@ -22,7 +22,7 @@ public class Ciudad {
         return this.nombre;
     }
 
-    public Provincia getProvincia() {
+    public ProvinciaEnum getProvincia() {
         return this.provincia;
     }
 
@@ -30,7 +30,7 @@ public class Ciudad {
         this.nombre = nombre;
     }
 
-    public void setProvincia(Provincia provincia) {
+    public void setProvincia(ProvinciaEnum provincia) {
         this.provincia = provincia;
     }
 

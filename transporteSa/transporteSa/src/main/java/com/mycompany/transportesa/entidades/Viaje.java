@@ -18,7 +18,7 @@ public class Viaje {
     private double precioPorPasajero;
     private double distanciaEnKilometro;
     private double costoPorKilometro;
-    private EstadoDeViaje estadoDeViaje;
+    private EstadoDeViajeEnum estadoDeViaje;
     private Ciudad ciudadOrigen;
     private Ciudad ciudadDestino;
     private Vehiculo vehiculo;
@@ -26,7 +26,7 @@ public class Viaje {
     private List<Pasajero> pasajeros;
 
     public Viaje(String fecha, String horario, double precioPorPasajero, double distanciaEnKilometro,
-            double costoPorKilometro, EstadoDeViaje estadoDeViaje, Ciudad ciudadOrigen,
+            double costoPorKilometro, EstadoDeViajeEnum estadoDeViaje, Ciudad ciudadOrigen,
             Ciudad ciudadDestino, Vehiculo vehiculo, Chofer chofer) {
         this.fecha = fecha;
         this.horario = horario;
@@ -81,11 +81,11 @@ public class Viaje {
         this.costoPorKilometro = costoPorKilometro;
     }
 
-    public EstadoDeViaje getEstadoDeViaje() {
+    public EstadoDeViajeEnum getEstadoDeViaje() {
         return estadoDeViaje;
     }
 
-    public void setEstadoDeViaje(EstadoDeViaje estadoDeViaje) {
+    public void setEstadoDeViaje(EstadoDeViajeEnum estadoDeViaje) {
         this.estadoDeViaje = estadoDeViaje;
     }
 

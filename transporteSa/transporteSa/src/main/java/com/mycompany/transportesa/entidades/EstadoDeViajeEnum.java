@@ -8,11 +8,8 @@ package com.mycompany.transportesa.entidades;
  *
  * @author Lucas
  */
-public enum Provincia {
-    BUENOS_AIRES,
-    CATAMARCA,
-    CHACO,
-    ENTRE_RIOS,
-    CORRIENTES,
-    MISIONES;
+public enum EstadoDeViajeEnum {
+    EN_CURSO,
+    FINALIZADO,
+    CANCELADO
 }
