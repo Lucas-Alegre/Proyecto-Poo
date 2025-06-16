@@ -11,5 +11,6 @@ package com.mycompany.transportesa.entidades;
 public enum EstadoDeViajeEnum {
     EN_CURSO,
     FINALIZADO,
-    CANCELADO
+    CANCELADO,
+    DISPONIBLE;
 }

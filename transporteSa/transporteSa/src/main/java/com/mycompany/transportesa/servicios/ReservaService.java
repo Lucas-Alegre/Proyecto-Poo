@@ -13,7 +13,7 @@ import com.mycompany.transportesa.entidades.*;
 public class ReservaService {
 
     public boolean validarCapacidadDisponible(Viaje viaje) {
-        return viaje.getPasajeros().size() < viaje.getVehiculo().getCapacidad();
+        return true;//viaje.getPasajeros().size() < viaje.getVehiculo().getCapacidad();
     }
 
     /*public void registrarReserva(Viaje viaje, Pasajero pasajero) throws CapacidadExcedidaException {

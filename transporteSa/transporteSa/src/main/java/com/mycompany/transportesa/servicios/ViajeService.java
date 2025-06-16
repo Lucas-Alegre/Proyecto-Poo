@@ -31,7 +31,7 @@ public class ViajeService {
         System.out.println(viaje);
     }
 
-    public void mostrarViajes() {
+    public void mostrarViajesDetallados() {
         for (Viaje viaje : listaViajes) {
             System.out.println(viaje);
         }

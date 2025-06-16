@@ -98,6 +98,7 @@ public class TransporteSa {
         
         
         //Benja: Crear logica para agregar ciudades y crear viajes con ciudad de origen y destino
+        //Lucas: Crear logica para agregar Vehículos y Choferes
         //Creo Ciudades
     
         Ciudad ciudadConcordia = new Ciudad("Concordia",ProvinciaEnum.ENTRE_RIOS);
@@ -105,21 +106,32 @@ public class TransporteSa {
         Ciudad ciudadRosario = new Ciudad("Rosario",ProvinciaEnum.SANTA_FE);
         Ciudad ciudadLanus = new Ciudad("Lanus",ProvinciaEnum.BUENOS_AIRES);
         
-        /*Creo Viajes
-        Se comenta hasta que se creen los choferes y vehiculos
-        Viaje viaje1 = new Viaje("11/10/2025","23:23:10",1000.00,100.1,10.0,ciudadConcordia,ciudadParana,vehiculo1,chofer1); //Hay que tomar el chofer y vehiculo creado por Caro Y ver como crear los viajes
-        Viaje viaje2 = new Viaje("10/11/2025","11:11:10",1010.10,99.1,9.10,ciudadRosario,ciudadLanus,vehiculo2,chofer2);     // Lo mismo que arriba
-        Viaje viaje3 = new Viaje("11/10/2025","23:23:10",1000.00,100.1,10.0,ciudadConcordia,ciudadParana,vehiculo3,chofer1); // Lo mismo qeu arriba
-        Viaje viaje4 = new Viaje("11/10/2025","23:23:10",1000.00,100.1,10.0,ciudadConcordia,ciudadParana,vehiculo3,chofer1); // Lo mismo que arriba     
+        //Creo Viajes
+        //Se comenta hasta que se creen los choferes y vehiculos
+        Viaje viaje1 = new Viaje("11/10/2025","22:23:10", "23:30:00",1000.00,100.1,10.0,ciudadConcordia,ciudadParana); //Hay que tomar el chofer y vehiculo creado por Caro Y ver como crear los viajes
+        Viaje viaje2 = new Viaje("10/11/2025","11:11:10","13:00:00",1010.10,99.1,9.10,ciudadRosario,ciudadLanus);     // Lo mismo que arriba
+        Viaje viaje3 = new Viaje("11/10/2025","23:23:10","24:00:00",1000.00,100.1,10.0,ciudadConcordia,ciudadParana); // Lo mismo qeu arriba
+        Viaje viaje4 = new Viaje("11/10/2025","18:00:00","20:45:00",1000.00,100.1,10.0,ciudadConcordia,ciudadParana); // Lo mismo que arriba     
+        
+        //Asignación de choferes y vehiculos a los viajes
+        //Se deben asignar choferes y vehiculos cuando esten creados
+        /*viaje1.agregarUnChoferAlViaje(chofer1);
+        viaje1.agregarUnVehiculoAlViaje(vehiculo1);
+        viaje2.agregarUnChoferAlViaje(chofer2);
+        viaje2.agregarUnVehiculoAlViaje(vehiculo2);
+        viaje3.agregarUnChoferAlViaje(chofer3);
+        viaje3.agregarUnVehiculoAlViaje(vehiculo3);
+        viaje4.agregarUnChoferAlViaje(chofer4);
+        viaje4.agregarUnVehiculoAlViaje(vehiculo4);*/
         
         viajeService.agregarViaje(viaje1);
         viajeService.agregarViaje(viaje2);
         viajeService.agregarViaje(viaje3);
         viajeService.agregarViaje(viaje4);
         
-       // gestorViaje.mostrarViajes();
-        
-        viajeService.viajesPorVehiculo(vehiculo3);*/ //Hay que crear un vehiculo con ese nombre y enviarlo
-       //Termino lo de benja
+       viajeService.mostrarViajesDetallados();
+       
+       //viajeService.viajesPorVehiculo(vehiculo3); //Hay que crear un vehiculo con ese nombre y enviarlo
+       //Termino lo de benja y Lucas punto 2,3,4 y 5
     }
 }
