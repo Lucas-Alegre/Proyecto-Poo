@@ -13,8 +13,10 @@ import java.util.ArrayList;
 
 
 public class Categoria {
+    
     private CategoriaEnum categoria;
     ArrayList<ChoferCategoria> choferCategoriaList;
+    
     public Categoria(CategoriaEnum categoria,  ArrayList<ChoferCategoria> choferCategoriaList){
         this.choferCategoriaList= choferCategoriaList;
         this.categoria=categoria;
@@ -30,6 +32,4 @@ public class Categoria {
     public String toString() {
         return "Categoria{" + "categoria=" + categoria + ", choferCategoriaList=" + choferCategoriaList + '}';
     }
-    //pruebo cambio desde netbeans
-    //segunda prieba
 }

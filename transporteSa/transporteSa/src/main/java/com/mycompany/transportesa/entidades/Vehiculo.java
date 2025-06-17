@@ -4,55 +4,70 @@
  */
 package com.mycompany.transportesa.entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Lucas
  */
 public abstract class Vehiculo {
-
     private String patente;
     private int capacidad;
     private int anioFabricacion;
     private double kilometraje;
+    private ArrayList<Viaje> viajeLista;
 
-    public Vehiculo(String patente, int capacidad, int anioFabricacion, double kilometraje) {
+    public Vehiculo(String patente, int capacidad, int anioFabricacion, double kilometraje, ArrayList<Viaje> viajeLista) {
         this.patente = patente;
         this.capacidad = capacidad;
         this.anioFabricacion = anioFabricacion;
-        this.kilometraje=kilometraje;
+        this.kilometraje = kilometraje;
+        this.viajeLista = viajeLista;
     }
 
     public String getPatente() {
-        return this.patente;
+        return patente;
     }
 
-    public void setPatente(String nuevaPatente) {
-        this.patente = nuevaPatente;
+    public void setPatente(String patente) {
+        this.patente = patente;
     }
 
     public int getCapacidad() {
-        return this.capacidad;
+        return capacidad;
     }
 
-    public void setCapacidad(int nuevaCapacidad) {
-        this.capacidad = nuevaCapacidad;
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public int getAnioFabricacion() {
-        return this.anioFabricacion;
+        return anioFabricacion;
     }
 
-    public void setFabricacion(int nuevoAnioFabricacion) {
-        this.anioFabricacion = nuevoAnioFabricacion;
+    public void setAnioFabricacion(int anioFabricacion) {
+        this.anioFabricacion = anioFabricacion;
     }
-    public double getKilometraje(){
-        return this.kilometraje;
+
+    public double getKilometraje() {
+        return kilometraje;
     }
-    public void setKilometraje(double nuevoKilometraje){
-        this.kilometraje=nuevoKilometraje;}
+
+    public void setKilometraje(double kilometraje) {
+        this.kilometraje = kilometraje;
+    }
+
+    public ArrayList<Viaje> getViajeLista() {
+        return viajeLista;
+    }
+
+    public void setViajeLista(ArrayList<Viaje> viajeLista) {
+        this.viajeLista = viajeLista;
+    }
 
     @Override
     public String toString() {
-        return "Patente: " + getPatente() + ", Capacidad: " + getCapacidad() + ", Anio de Fabricación: " + getAnioFabricacion()+ ", Kilometraje: "+getKilometraje();
+        return "Vehiculo{" + "patente=" + this.getPatente() + ", capacidad=" + this.getCapacidad() + ", anioFabricacion=" + this.getAnioFabricacion() + ", kilometraje=" + this.getKilometraje() + ", viajeLista=" + this.getViajeLista() + '}';
     }
+    
 }

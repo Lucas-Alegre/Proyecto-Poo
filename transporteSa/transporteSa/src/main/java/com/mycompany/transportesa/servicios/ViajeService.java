@@ -65,11 +65,11 @@ public class ViajeService {
         //Hacer logica
         return true;
     }
-
-    public void finalizarViaje(Empresa empresa, Viaje viaje) {
+/*
+    public void finalizarViaje(Viaje viaje) {
         double ganancia = viaje.calcularGanancias();
         viaje.setEstadoDeViaje(EstadoDeViajeEnum.FINALIZADO);
         empresa.sumarGanancias(ganancia);
     }
-    
+  */  
 }

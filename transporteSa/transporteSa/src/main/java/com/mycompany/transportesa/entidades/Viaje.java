@@ -24,18 +24,23 @@ public class Viaje {
     private Ciudad ciudadDestino;
     private Vehiculo vehiculo;
     private Chofer chofer;
+    private Reserva reserva;
+    private ArrayList <Pasajero> pasajeroLista;
 
-    public Viaje(String fecha, String horarioSalida, String horarioLlegada, double precioPorPasajero, double distanciaEnKilometro,
-            double costoPorKilometro, Ciudad ciudadOrigen,Ciudad ciudadDestino) {
+    public Viaje(String fecha, String horarioSalida, String horarioLlegada, double precioPorPasajero, double distanciaEnKilometro, double costoPorKilometro, EstadoDeViajeEnum estadoDeViaje, Ciudad ciudadOrigen, Ciudad ciudadDestino, Vehiculo vehiculo, Chofer chofer, Reserva reserva, ArrayList<Pasajero> pasajeroLista) {
         this.fecha = fecha;
         this.horarioSalida = horarioSalida;
-        this.horarioLlegada= horarioLlegada;
+        this.horarioLlegada = horarioLlegada;
         this.precioPorPasajero = precioPorPasajero;
         this.distanciaEnKilometro = distanciaEnKilometro;
         this.costoPorKilometro = costoPorKilometro;
-        this.estadoDeViaje = estadoDeViaje.DISPONIBLE;
+        this.estadoDeViaje = estadoDeViaje;
         this.ciudadOrigen = ciudadOrigen;
         this.ciudadDestino = ciudadDestino;
+        this.vehiculo = vehiculo;
+        this.chofer = chofer;
+        this.reserva = reserva;
+        this.pasajeroLista = pasajeroLista;
     }
 
     public String getFecha() {
@@ -50,15 +55,16 @@ public class Viaje {
         return horarioSalida;
     }
 
-    public void setHorarioSalida(String horario) {
-        this.horarioSalida = horario;
+    public void setHorarioSalida(String horarioSalida) {
+        this.horarioSalida = horarioSalida;
     }
-     public String getHorarioLlegada() {
+
+    public String getHorarioLlegada() {
         return horarioLlegada;
     }
 
-    public void setHorarioLlegadaa(String horario) {
-        this.horarioLlegada = horario;
+    public void setHorarioLlegada(String horarioLlegada) {
+        this.horarioLlegada = horarioLlegada;
     }
 
     public double getPrecioPorPasajero() {
@@ -125,22 +131,25 @@ public class Viaje {
         this.chofer = chofer;
     }
 
-    public double calcularGanancias() {
-        return precioPorPasajero - (distanciaEnKilometro * costoPorKilometro);
-    }
-    
-    public void agregarUnChoferAlViaje(Chofer chofer){
-        setChofer(chofer);
-    }
-    
-   public void agregarUnVehiculoAlViaje(Vehiculo vehiculo){
-        setVehiculo(vehiculo);
+    public Reserva getReserva() {
+        return reserva;
     }
 
-    
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+    public ArrayList<Pasajero> getPasajeroLista() {
+        return pasajeroLista;
+    }
+
+    public void setPasajeroLista(ArrayList<Pasajero> pasajeroLista) {
+        this.pasajeroLista = pasajeroLista;
+    }
+
     @Override
     public String toString() {
-        return "Viaje{" + "fecha=" + fecha + ", horarioSalida=" + horarioSalida + ", horarioLlegada=" + horarioLlegada + ", precioPorPasajero=" + precioPorPasajero + ", distanciaEnKilometro=" + distanciaEnKilometro + ", costoPorKilometro=" + costoPorKilometro + ", estadoDeViaje=" + estadoDeViaje + ", ciudadOrigen=" + ciudadOrigen + ", ciudadDestino=" + ciudadDestino + ", vehiculo=" + vehiculo + ", chofer=" + chofer + '}';
+        return "Viaje{" + "fecha=" + fecha + ", horarioSalida=" + horarioSalida + ", horarioLlegada=" + horarioLlegada + ", precioPorPasajero=" + precioPorPasajero + ", distanciaEnKilometro=" + distanciaEnKilometro + ", costoPorKilometro=" + costoPorKilometro + ", estadoDeViaje=" + estadoDeViaje + ", ciudadOrigen=" + ciudadOrigen + ", ciudadDestino=" + ciudadDestino + ", vehiculo=" + vehiculo + ", chofer=" + chofer + ", reserva=" + reserva + ", pasajeroLista=" + pasajeroLista + '}';
     }
-    
+   
 }

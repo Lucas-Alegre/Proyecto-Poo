@@ -14,12 +14,15 @@ public class Chofer extends Persona {
 
     private String nroLicencia;
     private List<ChoferCategoria> categorias;
+    private List<Viaje> viajeLista;
 
-    public Chofer(long dni, String nombre, String apellido, String nroLicencia,
-            List<ChoferCategoria> categorias) {
+    public Chofer(long dni, String nombre, 
+            String apellido, String nroLicencia,
+            List<ChoferCategoria> categorias, List<Viaje> viajeLista ) {
         super(dni, nombre, apellido);
         this.nroLicencia = nroLicencia;
         this.categorias = categorias;
+        this.viajeLista = viajeLista;
     }
 
     public String getNroLicencia() {
@@ -38,14 +41,21 @@ public class Chofer extends Persona {
         this.categorias = categorias;
     }
 
+    public List<Viaje> getViajeLista() {
+        return viajeLista;
+    }
+
+    public void setViajeLista(List<Viaje> viajeLista) {
+        this.viajeLista = viajeLista;
+    }
+
     public void agregarCategoria(ChoferCategoria categoria){
         categorias.add(categoria);
     }
- 
 
     @Override
     public String toString() {
-        return "Chofer con " + super.toString() + " Numero de Licencia: " + getNroLicencia() + " y Categorias: " + getCategorias();
+        return "Chofer{" +  super.toString() + "nroLicencia=" + nroLicencia + ", categorias=" + categorias + ", viajeLista=" + viajeLista + '}';
     }
 
 }

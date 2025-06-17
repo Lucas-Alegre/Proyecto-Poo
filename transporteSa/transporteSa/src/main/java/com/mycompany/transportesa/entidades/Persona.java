@@ -40,9 +40,9 @@ public abstract class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
+
     @Override
-    public String toString(){
-        return "Dni: "+getDni()+", Nombre: " + getNombre()+ ", Apellido: "+getApellido();
+    public String toString() {
+        return "Persona{" + "dni=" + this.getDni() + ", nombre=" + this.getNombre() + ", apellido=" + this.getApellido() + '}';
     }
 }

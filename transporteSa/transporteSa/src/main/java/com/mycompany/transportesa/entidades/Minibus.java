@@ -4,6 +4,8 @@
  */
 package com.mycompany.transportesa.entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Lucas
@@ -13,8 +15,8 @@ public class Minibus extends Vehiculo {
     private boolean tieneBodega;
     private boolean aireAcondicionado;
 
-    public Minibus(String patente, int capacidad, int anioFabricacion, double kilometraje, boolean tieneBodega, boolean aireAcondicionado) {
-        super(patente, capacidad, anioFabricacion, kilometraje);
+    public Minibus(String patente, int capacidad, int anioFabricacion, double kilometraje, ArrayList<Viaje> viajeLista, boolean tieneBodega, boolean aireAcondicionado) {
+        super(patente, capacidad, anioFabricacion, kilometraje, viajeLista);
         this.tieneBodega = tieneBodega;
         this.aireAcondicionado = aireAcondicionado;
     }

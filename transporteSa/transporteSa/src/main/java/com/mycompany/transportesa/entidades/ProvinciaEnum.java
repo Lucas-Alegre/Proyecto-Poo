@@ -10,10 +10,27 @@ package com.mycompany.transportesa.entidades;
  */
 public enum ProvinciaEnum {
     BUENOS_AIRES,
+    CABA,
     CATAMARCA,
     CHACO,
-    ENTRE_RIOS,
+    CHUBUT,
+    CORDOBA,
     CORRIENTES,
+    ENTRE_RIOS,
+    FORMOSA,
+    JUJUY,
+    LA_PAMPA,
+    LA_RIOJA,
+    MENDOZA,
     MISIONES,
-    SANTA_FE;
+    NEUQUEN,
+    RIO_NEGRO,
+    SALTA,
+    SAN_JUAN,
+    SAN_LUIS,
+    SANTA_CRUZ,
+    SANTA_FE,
+    SANTIAGO_DEL_ESTERO,
+    TIERRA_DEL_FUEGO,
+    TUCUMAN;
 }

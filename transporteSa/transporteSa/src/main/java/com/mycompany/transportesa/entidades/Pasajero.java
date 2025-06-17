@@ -11,11 +11,13 @@ package com.mycompany.transportesa.entidades;
 public class Pasajero extends Persona{
     private String email;
     private String numeroCelular;
+    private Reserva reserva;
     
-    public Pasajero(long dni, String nombre, String apellido, String email, String numeroCelular){
+    public Pasajero(long dni, String nombre, String apellido, String email, String numeroCelular, Reserva reserva){
         super(dni, nombre, apellido);
         this.email= email;
         this.numeroCelular = numeroCelular;
+        this.reserva=reserva;
     }
     
     public String getEmail(){
@@ -30,9 +32,16 @@ public class Pasajero extends Persona{
     public void setNumeroCelular(String nuevoNumeroCelular){
         this.numeroCelular= nuevoNumeroCelular;
     }
-    
-     @Override
-    public String toString() {
-        return "Pasajero con " + super.toString() + " Numero de celular: " + getNumeroCelular() + " y Email: " + getEmail();
+    public Reserva getReserva() {
+        return reserva;
     }
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+    @Override
+    public String toString() {
+        return "Pasajero{"  + super.toString() + "email=" + email + ", numeroCelular=" + numeroCelular + ", reserva=" + reserva + '}';
+    }
+
 }

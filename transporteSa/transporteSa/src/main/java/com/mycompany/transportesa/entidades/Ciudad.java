@@ -4,6 +4,8 @@
  */
 package com.mycompany.transportesa.entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Lucas
@@ -12,30 +14,50 @@ public class Ciudad {
 
     private String nombre;
     private ProvinciaEnum provincia;
+    private ArrayList<Viaje> OrigenLista;
+    private ArrayList<Viaje> DestinoLista;
 
-    public Ciudad(String nombre, ProvinciaEnum provincia) {
+    public Ciudad(String nombre, ProvinciaEnum provincia, ArrayList<Viaje> OrigenLista, ArrayList<Viaje> DestinoLista) {
         this.nombre = nombre;
         this.provincia = provincia;
+        this.OrigenLista = OrigenLista;
+        this.DestinoLista = DestinoLista;
     }
 
     public String getNombre() {
-        return this.nombre;
-    }
-
-    public ProvinciaEnum getProvincia() {
-        return this.provincia;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    public ProvinciaEnum getProvincia() {
+        return provincia;
+    }
+
     public void setProvincia(ProvinciaEnum provincia) {
         this.provincia = provincia;
     }
 
+    public ArrayList<Viaje> getOrigenLista() {
+        return OrigenLista;
+    }
+
+    public void setOrigenLista(ArrayList<Viaje> OrigenLista) {
+        this.OrigenLista = OrigenLista;
+    }
+
+    public ArrayList<Viaje> getDestinoLista() {
+        return DestinoLista;
+    }
+
+    public void setDestinoLista(ArrayList<Viaje> DestinoLista) {
+        this.DestinoLista = DestinoLista;
+    }
+
     @Override
     public String toString() {
-        return "Ciudad: " + getNombre() + ", en provincia de : " + getProvincia();
+        return "Ciudad{" + "nombre=" + nombre + ", provincia=" + provincia + ", OrigenLista=" + OrigenLista + ", DestinoLista=" + DestinoLista + '}';
     }
 }

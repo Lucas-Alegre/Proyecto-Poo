@@ -4,15 +4,18 @@
 
 package com.mycompany.transportesa;
 
+import com.mycompany.transportesa.entidades.Chofer;
 import com.mycompany.transportesa.entidades.Ciudad;
 import com.mycompany.transportesa.entidades.Colectivo;
 import com.mycompany.transportesa.entidades.Minibus;
 import com.mycompany.transportesa.entidades.ProvinciaEnum;
 import com.mycompany.transportesa.entidades.Viaje;
 import com.mycompany.transportesa.servicios.ChoferService;
+import com.mycompany.transportesa.servicios.InformeCantidadViajes;
 import com.mycompany.transportesa.servicios.ReservaService;
 import com.mycompany.transportesa.servicios.VehiculoService;
 import com.mycompany.transportesa.servicios.ViajeService;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -74,13 +77,13 @@ public class TransporteSa {
                     if (tipo == 1) {
                         System.out.print("Posee piso doble?");
                         boolean pisoDoble= sc.nextBoolean();
-                        vehiculoService.registrarVehiculo(new Colectivo(patente, capacidad, anioFabricacion, kilometraje, pisoDoble));
+                       // vehiculoService.registrarVehiculo(new Colectivo(patente, capacidad, anioFabricacion, kilometraje, pisoDoble));
                     } else {
                         System.out.print("Posee bodega?");
                         boolean tieneBodega= sc.nextBoolean();
                         System.out.print("Posee aire acondicionado?");
                         boolean aireAcondicionado= sc.nextBoolean();
-                        vehiculoService.registrarVehiculo(new Minibus(patente, capacidad, anioFabricacion, kilometraje,tieneBodega,aireAcondicionado));
+                     //   vehiculoService.registrarVehiculo(new Minibus(patente, capacidad, anioFabricacion, kilometraje,tieneBodega,aireAcondicionado));
                     }
                     break;
 
@@ -100,7 +103,7 @@ public class TransporteSa {
         //Benja: Crear logica para agregar ciudades y crear viajes con ciudad de origen y destino
         //Lucas: Crear logica para agregar Vehículos y Choferes
         //Creo Ciudades
-    
+    /*
         Ciudad ciudadConcordia = new Ciudad("Concordia",ProvinciaEnum.ENTRE_RIOS);
         Ciudad ciudadParana = new Ciudad("Parana",ProvinciaEnum.ENTRE_RIOS);
         Ciudad ciudadRosario = new Ciudad("Rosario",ProvinciaEnum.SANTA_FE);
@@ -112,7 +115,7 @@ public class TransporteSa {
         Viaje viaje2 = new Viaje("10/11/2025","11:11:10","13:00:00",1010.10,99.1,9.10,ciudadRosario,ciudadLanus);     // Lo mismo que arriba
         Viaje viaje3 = new Viaje("11/10/2025","23:23:10","24:00:00",1000.00,100.1,10.0,ciudadConcordia,ciudadParana); // Lo mismo qeu arriba
         Viaje viaje4 = new Viaje("11/10/2025","18:00:00","20:45:00",1000.00,100.1,10.0,ciudadConcordia,ciudadParana); // Lo mismo que arriba     
-        
+      */  
         //Asignación de choferes y vehiculos a los viajes
         //Se deben asignar choferes y vehiculos cuando esten creados
         /*viaje1.agregarUnChoferAlViaje(chofer1);
@@ -123,15 +126,20 @@ public class TransporteSa {
         viaje3.agregarUnVehiculoAlViaje(vehiculo3);
         viaje4.agregarUnChoferAlViaje(chofer4);
         viaje4.agregarUnVehiculoAlViaje(vehiculo4);*/
-        
+    /*    
         viajeService.agregarViaje(viaje1);
         viajeService.agregarViaje(viaje2);
         viajeService.agregarViaje(viaje3);
         viajeService.agregarViaje(viaje4);
         
        viajeService.mostrarViajesDetallados();
-       
+       */
        //viajeService.viajesPorVehiculo(vehiculo3); //Hay que crear un vehiculo con ese nombre y enviarlo
        //Termino lo de benja y Lucas punto 2,3,4 y 5
+       
+       InformeCantidadViajes service = new InformeCantidadViajes();
+        // no agregaron choferes asi pos weno dara error por un tiempis
+       //HashMap<Chofer, Integer> informe = service.cantidadViajesChofer(choferLista);
+      // service.mostrarInformeCantidadViajes(informe);
     }
 }

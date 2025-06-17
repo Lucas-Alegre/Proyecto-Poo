@@ -12,7 +12,7 @@ import java.util.List;
  * @author Lucas
  */
 public class EmpresaService {
-
+/*
     private Empresa empresa;
 
     public EmpresaService(Empresa empresa) {
@@ -42,4 +42,5 @@ public class EmpresaService {
     public List<Reserva> listaReservas() {
         return empresa.getReservas();
     }
+*/
 }

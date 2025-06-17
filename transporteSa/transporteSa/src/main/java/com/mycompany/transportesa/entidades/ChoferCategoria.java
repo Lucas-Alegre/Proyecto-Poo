@@ -9,44 +9,39 @@ package com.mycompany.transportesa.entidades;
  * @author Lucas
  */
 public class ChoferCategoria {
-
+    
+    private String fechaDeVencimiento;
     private Chofer chofer;
     private Categoria categoria;
-    private String fechaDeVencimiento;
 
-    public ChoferCategoria(Chofer chofer, Categoria categoria, String fechaDeVencimiento) {
+    public ChoferCategoria(String fechaDeVencimiento, Chofer chofer, Categoria categoria) {
+        this.fechaDeVencimiento = fechaDeVencimiento;
         this.chofer = chofer;
         this.categoria = categoria;
+    }
+    
+     public String getFechaDeVencimiento() {
+        return fechaDeVencimiento;
+    }
+    public void setFechaDeVencimiento(String fechaDeVencimiento) {
         this.fechaDeVencimiento = fechaDeVencimiento;
     }
-
     public Chofer getChofer() {
         return chofer;
     }
-
-    public void setChofer(Chofer chofer) {
+        public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
-
     public Categoria getCategoria() {
         return categoria;
     }
-
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
-    public String getFechaDeVencimiento() {
-        return fechaDeVencimiento;
-    }
-
-    public void setFechaDeVencimiento(String fechaDeVencimiento) {
-        this.fechaDeVencimiento = fechaDeVencimiento;
-    }
-
     @Override
     public String toString() {
-        return "ChoferCategoria{" + "chofer=" + chofer + ", categoria=" + categoria + ", fechaDeVencimiento=" + fechaDeVencimiento + '}';
+        return "ChoferCategoria{" + "fechaDeVencimiento=" + fechaDeVencimiento + ", chofer=" + chofer + ", categoria=" + categoria + '}';
     }
-    
+
 }
