@@ -9,6 +9,8 @@ import com.mycompany.transportesa.entidades.Ciudad;
 import com.mycompany.transportesa.entidades.EstadoDeViajeEnum;
 import com.mycompany.transportesa.entidades.Vehiculo;
 import com.mycompany.transportesa.entidades.Viaje;
+import com.mycompany.transportesa.excepciones.VehiculoNoDisponibleExcepcion;
+import com.mycompany.transportesa.excepciones.ChoferNoDispinibleExcepcion;
 import java.util.ArrayList;
 
 /**
@@ -18,8 +20,8 @@ import java.util.ArrayList;
 public class PlanificadorDeViajes {
 //3. Asociar un vehículo y un chofer a cada viaje.
 
-    //primero tenemos que buscar un chofer disponible, si ocupado=true rompemos/ deberiamos lanzar excepcion?
-    public Chofer buscarChoferDisponible(ArrayList<Chofer> choferes, String fecha) {
+    //primero tenemos que buscar un chofer disponible, recorremos si uno al menos esta disponible, sino? lanzamos excepcion
+    public Chofer buscarChoferDisponible(ArrayList<Chofer> choferes, String fecha) throws ChoferNoDispinibleExcepcion {
         for (Chofer chofer : choferes) {
             boolean ocupado = false;
             for (Viaje viaje : chofer.getViajeLista()) {
@@ -32,10 +34,10 @@ public class PlanificadorDeViajes {
                 return chofer;
             }
         }
-        return null;
+        throw new ChoferNoDispinibleExcepcion("No hay chofer disponible en la fecha " + fecha);
     }
 
-    public Vehiculo buscarVehiculoDisponible(ArrayList<Vehiculo> vehiculos, String fecha, ArrayList<Viaje> viajes) {
+    public Vehiculo buscarVehiculoDisponible(ArrayList<Vehiculo> vehiculos, String fecha, ArrayList<Viaje> viajes) throws VehiculoNoDisponibleExcepcion {
         for (Vehiculo vehiculo : vehiculos) {
             boolean ocupado = false;
             for (Viaje viaje : viajes) {
@@ -48,25 +50,16 @@ public class PlanificadorDeViajes {
                 return vehiculo;
             }
         }
-        return null;
+        throw new VehiculoNoDisponibleExcepcion("No hay vehículo disponible en la fecha " + fecha);
     }
 
     public Viaje crearViaje(String fecha, String horaSalida, String horaLlegada,
             double precioPorPasajero, double distanciaKm, double costoKm,
             Ciudad origen, Ciudad destino,
-            ArrayList<Chofer> choferes, ArrayList<Vehiculo> vehiculos, ArrayList<Viaje> viajesExistentes) {
-
+            ArrayList<Chofer> choferes, ArrayList<Vehiculo> vehiculos, ArrayList<Viaje> viajesExistentes) throws ChoferNoDispinibleExcepcion, VehiculoNoDisponibleExcepcion {
+        // vemos si el vehiculo y chofer es null lanzamos excepciones, los metodos estan arriba para que quede mas limpio
         Chofer choferDisponible = buscarChoferDisponible(choferes, fecha);
         Vehiculo vehiculoDisponible = buscarVehiculoDisponible(vehiculos, fecha, viajesExistentes);
-
-        if (choferDisponible == null) {
-            System.out.println("No hay chofer disponible en la fecha " + fecha);
-            return null;
-        }
-        if (vehiculoDisponible == null) {
-            System.out.println("No vehiculo disponible en la fecha " + fecha);
-            return null;
-        }
 
         Viaje nuevoViaje = new Viaje(fecha, horaSalida, horaLlegada, precioPorPasajero, distanciaKm, costoKm,
                 EstadoDeViajeEnum.PENDIENTE, origen, destino, vehiculoDisponible, choferDisponible,
