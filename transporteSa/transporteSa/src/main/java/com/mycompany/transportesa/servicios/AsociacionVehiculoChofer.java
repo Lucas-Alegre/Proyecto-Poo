@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author
  */
-public class PlanificadorDeViajes {
+public class AsociacionVehiculoChofer {
 //3. Asociar un vehículo y un chofer a cada viaje.
 
     //primero tenemos que buscar un chofer disponible, recorremos si uno al menos esta disponible, sino? lanzamos excepcion
@@ -57,7 +57,7 @@ public class PlanificadorDeViajes {
             double precioPorPasajero, double distanciaKm, double costoKm,
             Ciudad origen, Ciudad destino,
             ArrayList<Chofer> choferes, ArrayList<Vehiculo> vehiculos, ArrayList<Viaje> viajesExistentes) throws ChoferNoDispinibleExcepcion, VehiculoNoDisponibleExcepcion {
-        // vemos si el vehiculo y chofer es null lanzamos excepciones, los metodos estan arriba para que quede mas limpio
+        // vemos si el vehiculo y chofer es null, lanzamos excepciones, los metodos estan arriba para que quede mas limpio
         Chofer choferDisponible = buscarChoferDisponible(choferes, fecha);
         Vehiculo vehiculoDisponible = buscarVehiculoDisponible(vehiculos, fecha, viajesExistentes);
 
