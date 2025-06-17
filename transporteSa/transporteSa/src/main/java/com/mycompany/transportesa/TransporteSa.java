@@ -21,7 +21,7 @@ public class TransporteSa {
         ChoferService choferService = new ChoferService();
         VehiculoService vehiculoService = new VehiculoService();
         ViajeService viajeService = new ViajeService();
-        InformeCantidadViajes informe = new InformeCantidadViajes();
+        InformeCantidadViajesService informe = new InformeCantidadViajesService();
 
         // 1. Crear choferes
         Chofer chofer1 = new Chofer(12345678, "Carlos", "Pérez", "ABC123", new ArrayList<>(), new ArrayList<>());

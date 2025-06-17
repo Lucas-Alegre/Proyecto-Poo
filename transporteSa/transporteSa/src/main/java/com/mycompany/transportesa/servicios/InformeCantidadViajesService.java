@@ -14,7 +14,7 @@ import java.util.HashMap;
  *
  * @author
  */
-public class InformeCantidadViajes {
+public class InformeCantidadViajesService {
 
 // pto 6 y validar si el chofer no aparece dos veces por ejemplo // NO ESTA ANDANDO :(
     public HashMap<Chofer, Integer> cantidadViajesChofer(ArrayList<Chofer> choferLista) {

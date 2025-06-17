@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author
  */
-public class AsociacionVehiculoChofer {
+public class AsociacionVehiculoChoferService {
 //3. Asociar un vehículo y un chofer a cada viaje.
 
     //primero tenemos que buscar un chofer disponible, recorremos si uno al menos esta disponible, sino? lanzamos excepcion
