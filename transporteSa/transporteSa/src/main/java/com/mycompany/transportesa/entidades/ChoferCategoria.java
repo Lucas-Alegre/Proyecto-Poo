@@ -6,7 +6,7 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author Lucas
+ * @author 
  */
 public class ChoferCategoria {
     

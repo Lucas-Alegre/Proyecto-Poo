@@ -6,11 +6,11 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author Lucas
+ * @author 
  */
 public enum EstadoDeViajeEnum {
     EN_CURSO,
     FINALIZADO,
-    CANCELADO,
-    DISPONIBLE;
+    PENDIENTE,
+    PROGRAMADO;
 }

@@ -12,12 +12,12 @@ import java.util.HashMap;
 
 /**
  *
- * @author Usuario
+ * @author 
  */
 public class InformeCantidadViajes {
   
 
-// validar si el chofer no aparece dos veces por ejemplo
+// pto 6 y validar si el chofer no aparece dos veces por ejemplo
 
     public HashMap<Chofer, Integer> cantidadViajesChofer( ArrayList<Chofer> choferLista) {
 

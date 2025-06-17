@@ -6,7 +6,7 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author Lucas
+ * @author 
  */
 public abstract class Persona {
     private long dni;

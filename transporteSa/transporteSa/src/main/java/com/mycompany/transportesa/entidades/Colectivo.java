@@ -4,32 +4,32 @@
  */
 package com.mycompany.transportesa.entidades;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 
 /**
  *
- * @author Lucas
+ * @author 
  */
+
 public class Colectivo extends Vehiculo {
 
-    private boolean pisoDobre;
+    private boolean pisoDoble;
 
-    public Colectivo(String patente, int capacidad, int anioFabricacion, double kilometraje, ArrayList<Viaje> viajeLista,boolean pisoDoble) {
+    public Colectivo(String patente, int capacidad, int anioFabricacion, double kilometraje, ArrayList<Viaje> viajeLista, boolean pisoDoble) {
         super(patente, capacidad, anioFabricacion, kilometraje, viajeLista);
-        this.pisoDobre = pisoDoble;
+        this.pisoDoble = pisoDoble;
     }
 
     public boolean getPisoDoble() {
-        return this.pisoDobre;
+        return this.pisoDoble;
     }
 
-    public void setPisoDoble(boolean nuevoEstadoDePiso) {
-        this.pisoDobre = nuevoEstadoDePiso;
+    public void setPisoDoble(boolean pisoDoble) {
+        this.pisoDoble = pisoDoble;
     }
 
     @Override
     public String toString() {
-        return "Colectivo{" + super.toString() + "pisoDobre=" + pisoDobre + '}';
+        return "Colectivo{" + super.toString() + ", pisoDoble=" + pisoDoble + '}';
     }
-    
 }

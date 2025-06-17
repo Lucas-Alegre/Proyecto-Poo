@@ -52,7 +52,15 @@ public class Chofer extends Persona {
     public void agregarCategoria(ChoferCategoria categoria){
         categorias.add(categoria);
     }
-
+    //El chofer tiene viajes ese dia???
+    public boolean estaDisponible(String fecha) {
+        for (Viaje v : viajeLista) {
+            if (v.getFecha().equals(fecha)) {
+                return false; 
+            }
+        }
+        return true;
+    }
     @Override
     public String toString() {
         return "Chofer{" +  super.toString() + "nroLicencia=" + nroLicencia + ", categorias=" + categorias + ", viajeLista=" + viajeLista + '}';

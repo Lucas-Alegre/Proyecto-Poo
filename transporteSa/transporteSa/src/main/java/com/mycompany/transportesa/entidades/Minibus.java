@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Lucas
+ * @author 
  */
 public class Minibus extends Vehiculo {
 

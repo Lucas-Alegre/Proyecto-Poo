@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.transportesa.servicios;
+
 import com.mycompany.transportesa.entidades.*;
 import java.util.ArrayList;
 
 /**
  *
- * @author Lucas
+ * @author 
  */
-public class ViajeService {
-    
-    ArrayList<Viaje> listaViajes;
 
-    //Crear validaciones, "No se debe poder agregar mas personas al viaje si el cupo de personas por vehiculo esta lleno"
+public class ViajeService {
+
+    private ArrayList<Viaje> listaViajes;
+
     public ViajeService() {
         listaViajes = new ArrayList<>();
     }
@@ -27,49 +24,105 @@ public class ViajeService {
         listaViajes.remove(viaje);
     }
 
-    public void mostrarViaje(Viaje viaje) {
-        System.out.println(viaje);
+    public ArrayList<Viaje> getListaViajes() {
+        return listaViajes;
     }
 
-    public void mostrarViajesDetallados() {
-        for (Viaje viaje : listaViajes) {
-            System.out.println(viaje);
+    // Planificar un viaje entre dos ciudades
+    public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
+                                  double precio, double distancia, double costo,
+                                  Ciudad origen, Ciudad destino,
+                                  Vehiculo vehiculo, Chofer chofer) {
+
+        if (!choferLibreEseDia(chofer, fecha)) {
+            System.out.println("El chofer ya tiene un viaje en esa fecha.");
+            return null;
         }
+
+        Viaje viaje = new Viaje(
+            fecha,
+            horaSalida,
+            horaLlegada,
+            precio,
+            distancia,
+            costo,
+            EstadoDeViajeEnum.PROGRAMADO,
+            origen,
+            destino,
+            vehiculo,
+            chofer,
+            null,
+            new ArrayList<>()
+        );
+
+        listaViajes.add(viaje);
+        chofer.getViajeLista().add(viaje);
+        return viaje;
     }
 
-    public void viajesPorVehiculo(Vehiculo vehiculo) {
-        ArrayList<Viaje> lista = new ArrayList<>();
-        for (int i = 0; i < listaViajes.size(); i++) {
-            if (listaViajes.get(i).getVehiculo() instanceof Colectivo) {
-                Colectivo colectivo = (Colectivo) listaViajes.get(i).getVehiculo();
-                if (colectivo.equals(vehiculo)) {
-                    lista.add(listaViajes.get(i));
-                }
+    // Verifica si el chofer está libre ese día
+    private boolean choferLibreEseDia(Chofer chofer, String fecha) {
+        for (Viaje v : chofer.getViajeLista()) {
+            if (v.getFecha().equals(fecha)) {
+                return false;
             }
         }
-        for (Viaje viaje : lista) {
-            System.out.println(viaje);
-            System.out.println("\n");
+        return true;
+    }
+
+    // Mostrar todos los viajes
+    public void mostrarViajes() {
+        for (Viaje v : listaViajes) {
+            System.out.println(v);
         }
     }
 
-    public void cantidadViajesChofer() {
+    // Mostrar los viajes programados con información detallada
+    public void mostrarViajesProgramadosDetallados() {
+        System.out.println("-------------------- VIAJES PROGRAMADOS --------------------");
+
+        for (Viaje viaje : listaViajes) {
+            if (viaje.getEstadoDeViaje() == EstadoDeViajeEnum.PROGRAMADO) {
+                System.out.println("Fecha: " + viaje.getFecha());
+                System.out.println("Horario de salida: " + viaje.getHorarioSalida());
+                System.out.println("Desde: " + viaje.getCiudadOrigen().getNombre());
+                System.out.println("Hasta: " + viaje.getCiudadDestino().getNombre());
+                System.out.println("Chofer: " + viaje.getChofer().getNombre() + " " + viaje.getChofer().getApellido());
+                System.out.println("Vehículo: Patente " + viaje.getVehiculo().getPatente());
+                System.out.println("Cantidad de pasajeros: " + viaje.getPasajeroLista().size());
+                System.out.println("Precio por pasajero: $" + viaje.getPrecioPorPasajero());
+                System.out.println("Estado: " + viaje.getEstadoDeViaje());
+                System.out.println("-----------------------------------------------------------------------------");
+            }
+        }
     }
 
-    public boolean validarChoferDisponible(Viaje viaje, Chofer chofer) {
-        //Hacer logica
-        return true;
-    }
+    // Informe detallado de viajes que tiene que realizar un colectivo
+    public void mostrarViajesPorColectivoDetallado(Colectivo colectivo) {
+        System.out.println("-------------------- INFORME DETALLADO DE VIAJES PARA EL COLECTIVO --------------------");
+        System.out.println("Patente: " + colectivo.getPatente());
 
-    public boolean validarVehiculosDisponible(Viaje viaje, Vehiculo vehiculo) {
-        //Hacer logica
-        return true;
+        boolean viajeActivo = false;
+
+        for (Viaje viaje : listaViajes) {
+            if (viaje.getVehiculo().equals(colectivo) &&
+                viaje.getEstadoDeViaje() != EstadoDeViajeEnum.FINALIZADO) {
+
+                viajeActivo = true;
+                System.out.println("Fecha: " + viaje.getFecha());
+                System.out.println("Horario salida: " + viaje.getHorarioSalida());
+                System.out.println("Ciudad origen: " + viaje.getCiudadOrigen().getNombre());
+                System.out.println("Ciudad destino: " + viaje.getCiudadDestino().getNombre());
+                System.out.println("Chofer: " + viaje.getChofer().getNombre() + " " + viaje.getChofer().getApellido());
+                System.out.println("Cantidad de pasajeros: " + viaje.getPasajeroLista().size());
+                System.out.println("Precio por pasajero: $" + viaje.getPrecioPorPasajero());
+                System.out.println("Estado: " + viaje.getEstadoDeViaje());
+                System.out.println("-----------------------------------------------------------------------------");
+            }
+        }
+
+        if (!viajeActivo) {
+            System.out.println("No hay viajes programados o en curso para este colectivo.");
+        }
     }
-/*
-    public void finalizarViaje(Viaje viaje) {
-        double ganancia = viaje.calcularGanancias();
-        viaje.setEstadoDeViaje(EstadoDeViajeEnum.FINALIZADO);
-        empresa.sumarGanancias(ganancia);
-    }
-  */  //
 }

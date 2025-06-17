@@ -8,20 +8,21 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Lucas
+ * @author 
  */
 public class Ciudad {
+
 
     private String nombre;
     private ProvinciaEnum provincia;
     private ArrayList<Viaje> OrigenLista;
     private ArrayList<Viaje> DestinoLista;
 
-    public Ciudad(String nombre, ProvinciaEnum provincia, ArrayList<Viaje> OrigenLista, ArrayList<Viaje> DestinoLista) {
+    public Ciudad(String nombre, ProvinciaEnum provincia) {
         this.nombre = nombre;
         this.provincia = provincia;
-        this.OrigenLista = OrigenLista;
-        this.DestinoLista = DestinoLista;
+        this.OrigenLista = new ArrayList<>();
+        this.DestinoLista = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -55,9 +56,9 @@ public class Ciudad {
     public void setDestinoLista(ArrayList<Viaje> DestinoLista) {
         this.DestinoLista = DestinoLista;
     }
-
+    
     @Override
     public String toString() {
-        return "Ciudad{" + "nombre=" + nombre + ", provincia=" + provincia + ", OrigenLista=" + OrigenLista + ", DestinoLista=" + DestinoLista + '}';
+        return "Ciudad{" + "nombre=" + nombre + ", provincia=" + provincia + '}'; //+ ", OrigenLista=" + OrigenLista + ", DestinoLista=" + DestinoLista + '}';
     }
 }
