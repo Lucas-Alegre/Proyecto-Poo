@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
-    public class PlanificadorDeViajes {
+public class PlanificadorDeViajes {
 
     public Chofer buscarChoferDisponible(ArrayList<Chofer> choferes, String fecha) {
         for (Chofer chofer : choferes) {
@@ -26,7 +26,9 @@ import java.util.ArrayList;
                     break;
                 }
             }
-            if (!ocupado) return chofer;
+            if (!ocupado) {
+                return chofer;
+            }
         }
         return null;
     }
@@ -40,15 +42,17 @@ import java.util.ArrayList;
                     break;
                 }
             }
-            if (!ocupado) return vehiculo;
+            if (!ocupado) {
+                return vehiculo;
+            }
         }
         return null;
     }
 
     public Viaje crearViaje(String fecha, String horaSalida, String horaLlegada,
-                            double precioPorPasajero, double distanciaKm, double costoKm,
-                            Ciudad origen, Ciudad destino,
-                            ArrayList<Chofer> choferes, ArrayList<Vehiculo> vehiculos, ArrayList<Viaje> viajesExistentes) {
+            double precioPorPasajero, double distanciaKm, double costoKm,
+            Ciudad origen, Ciudad destino,
+            ArrayList<Chofer> choferes, ArrayList<Vehiculo> vehiculos, ArrayList<Viaje> viajesExistentes) {
 
         Chofer choferDisponible = buscarChoferDisponible(choferes, fecha);
         Vehiculo vehiculoDisponible = buscarVehiculoDisponible(vehiculos, fecha, viajesExistentes);

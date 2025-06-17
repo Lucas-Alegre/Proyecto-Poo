@@ -6,9 +6,10 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author 
+ * @author
  */
 public class Reserva {
+
     private Pasajero pasajero;
     private Viaje viaje;
     private String fechaReserva;
@@ -57,7 +58,5 @@ public class Reserva {
     public String toString() {
         return "Reserva{" + "pasajero=" + pasajero + ", viaje=" + viaje + ", fechaReserva=" + fechaReserva + ", estadoReserva=" + estadoReserva + '}';
     }
-    
-    
-    
+
 }

@@ -9,15 +9,16 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
 public class VehiculoService {
-     private ArrayList<Vehiculo> vehiculoList;
-    
-    public VehiculoService(){
-        vehiculoList =   new ArrayList<>();      
+
+    private ArrayList<Vehiculo> vehiculoList;
+
+    public VehiculoService() {
+        vehiculoList = new ArrayList<>();
     }
-   
+
     // registrar vehiculo
     public boolean registrarVehiculo(Vehiculo vehiculo) {
         for (Vehiculo v : vehiculoList) {
@@ -27,11 +28,11 @@ public class VehiculoService {
             }
         }
         vehiculoList.add(vehiculo);
-        System.out.println("el vehiculo: " + vehiculo + " "+ " ha sido registrado con exitoso.");
+        System.out.println("el vehiculo: " + vehiculo + " " + " ha sido registrado con exitoso.");
         return true;
     }
 
-     //mostrar vehiculo
+    //mostrar vehiculo
     public void mostrarVehiculos() {
         System.out.println("Lista de vehículos:");
         for (Vehiculo v : vehiculoList) {

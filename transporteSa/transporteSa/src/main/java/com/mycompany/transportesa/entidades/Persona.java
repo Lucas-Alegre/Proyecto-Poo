@@ -6,26 +6,29 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author 
+ * @author
  */
 public abstract class Persona {
+
     private long dni;
     private String nombre;
     private String apellido;
-    
-    public Persona(long dni, String nombre, String apellido){
-    this.dni = dni;
-    this.nombre= nombre;
-    this.apellido= apellido;
+
+    public Persona(long dni, String nombre, String apellido) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
-    
-    public String getNombre(){
+
+    public String getNombre() {
         return this.nombre;
     }
-    public String getApellido(){
+
+    public String getApellido() {
         return this.apellido;
     }
-    public long getDni(){
+
+    public long getDni() {
         return this.dni;
     }
 

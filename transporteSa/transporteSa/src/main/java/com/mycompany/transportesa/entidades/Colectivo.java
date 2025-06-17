@@ -4,13 +4,12 @@
  */
 package com.mycompany.transportesa.entidades;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
-
 public class Colectivo extends Vehiculo {
 
     private boolean pisoDoble;

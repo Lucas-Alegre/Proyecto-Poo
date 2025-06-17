@@ -25,7 +25,7 @@ public class Viaje {
     private Vehiculo vehiculo;
     private Chofer chofer;
     private Reserva reserva;
-    private ArrayList <Pasajero> pasajeroLista;
+    private ArrayList<Pasajero> pasajeroLista;
 
     public Viaje(String fecha, String horarioSalida, String horarioLlegada, double precioPorPasajero, double distanciaEnKilometro, double costoPorKilometro, EstadoDeViajeEnum estadoDeViaje, Ciudad ciudadOrigen, Ciudad ciudadDestino, Vehiculo vehiculo, Chofer chofer, Reserva reserva, ArrayList<Pasajero> pasajeroLista) {
         this.fecha = fecha;
@@ -151,5 +151,5 @@ public class Viaje {
     public String toString() {
         return "Viaje{" + "fecha=" + fecha + ", horarioSalida=" + horarioSalida + ", horarioLlegada=" + horarioLlegada + ", precioPorPasajero=" + precioPorPasajero + ", distanciaEnKilometro=" + distanciaEnKilometro + ", costoPorKilometro=" + costoPorKilometro + ", estadoDeViaje=" + estadoDeViaje + ", ciudadOrigen=" + ciudadOrigen + ", ciudadDestino=" + ciudadDestino + ", vehiculo=" + vehiculo + ", chofer=" + chofer + ", reserva=" + reserva + ", pasajeroLista=" + pasajeroLista + '}';
     }
-   
+
 }

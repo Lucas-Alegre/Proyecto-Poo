@@ -6,10 +6,10 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author 
+ * @author
  */
 public class ChoferCategoria {
-    
+
     private String fechaDeVencimiento;
     private Chofer chofer;
     private Categoria categoria;
@@ -19,22 +19,27 @@ public class ChoferCategoria {
         this.chofer = chofer;
         this.categoria = categoria;
     }
-    
-     public String getFechaDeVencimiento() {
+
+    public String getFechaDeVencimiento() {
         return fechaDeVencimiento;
     }
+
     public void setFechaDeVencimiento(String fechaDeVencimiento) {
         this.fechaDeVencimiento = fechaDeVencimiento;
     }
+
     public Chofer getChofer() {
         return chofer;
     }
-        public void setChofer(Chofer chofer) {
+
+    public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
+
     public Categoria getCategoria() {
         return categoria;
     }
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }

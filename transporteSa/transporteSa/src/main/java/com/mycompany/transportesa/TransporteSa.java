@@ -1,19 +1,20 @@
 package com.mycompany.transportesa;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
 import com.mycompany.transportesa.entidades.*;
-import com.mycompany.transportesa.servicios.*; 
+import com.mycompany.transportesa.servicios.*;
 import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
-
 public class TransporteSa {
+
     public static void main(String[] args) {
         // Crear servicios
         ChoferService choferService = new ChoferService();
@@ -59,6 +60,6 @@ public class TransporteSa {
         viajeService.mostrarViajesPorColectivoDetallado(colectivo1);
 
         // 6. Informe de cantidad de viajes por chofer
-       // informe.mostrarCantidadDeViajesPorChofer(choferService.mostrarInformeCantidadViajes());
+        // informe.mostrarCantidadDeViajesPorChofer(choferService.mostrarInformeCantidadViajes());
     }
 }

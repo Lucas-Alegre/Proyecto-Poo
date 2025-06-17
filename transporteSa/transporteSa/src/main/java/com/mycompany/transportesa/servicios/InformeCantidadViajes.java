@@ -12,44 +12,39 @@ import java.util.HashMap;
 
 /**
  *
- * @author 
+ * @author
  */
 public class InformeCantidadViajes {
-  
 
 // pto 6 y validar si el chofer no aparece dos veces por ejemplo
-
-    public HashMap<Chofer, Integer> cantidadViajesChofer( ArrayList<Chofer> choferLista) {
+    public HashMap<Chofer, Integer> cantidadViajesChofer(ArrayList<Chofer> choferLista) {
 
         HashMap<Chofer, Integer> choferesMap = new HashMap<>();
         ArrayList<Long> dniProcesado = new ArrayList<>();
 
         for (Chofer chofer : choferLista) {
-          if (!dniProcesado.contains(chofer.getDni())) {
+            if (!dniProcesado.contains(chofer.getDni())) {
                 int cantidad = 0;
                 for (Viaje viaje : chofer.getViajeLista()) {
 
                     if (viaje.getVehiculo() instanceof Colectivo) {
-                      if (viaje.getVehiculo() instanceof Colectivo && viaje.getChofer().getDni() == chofer.getDni()) {
-                        cantidad++;
-                      }
+                        if (viaje.getVehiculo() instanceof Colectivo && viaje.getChofer().getDni() == chofer.getDni()) {
+                            cantidad++;
+                        }
                     }
                 }
-             choferesMap.put(chofer, cantidad);
-             dniProcesado.add(chofer.getDni());
+                choferesMap.put(chofer, cantidad);
+                dniProcesado.add(chofer.getDni());
             }
         }
-      return choferesMap;
+        return choferesMap;
     }
-    
+
     public void mostrarInformeCantidadViajes(HashMap<Chofer, Integer> informe) {
         for (Chofer chofer : informe.keySet()) {
             int cantidad = informe.get(chofer);
             System.out.println("Chofer " + chofer.getNombre() + " " + chofer.getApellido() + " realizó " + cantidad + " viaje(s) en colectivo.");
         }
-    }          
+    }
 
- }
-
-
-
+}

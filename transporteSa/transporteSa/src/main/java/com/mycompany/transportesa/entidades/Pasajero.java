@@ -6,42 +6,48 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author 
+ * @author
  */
-public class Pasajero extends Persona{
+public class Pasajero extends Persona {
+
     private String email;
     private String numeroCelular;
     private Reserva reserva;
-    
-    public Pasajero(long dni, String nombre, String apellido, String email, String numeroCelular, Reserva reserva){
+
+    public Pasajero(long dni, String nombre, String apellido, String email, String numeroCelular, Reserva reserva) {
         super(dni, nombre, apellido);
-        this.email= email;
+        this.email = email;
         this.numeroCelular = numeroCelular;
-        this.reserva=reserva;
+        this.reserva = reserva;
     }
-    
-    public String getEmail(){
+
+    public String getEmail() {
         return this.email;
     }
-    public void setEmail(String nuevoEmail){
+
+    public void setEmail(String nuevoEmail) {
         this.email = nuevoEmail;
     }
-    public String getNumeroCelular(){
+
+    public String getNumeroCelular() {
         return this.numeroCelular;
     }
-    public void setNumeroCelular(String nuevoNumeroCelular){
-        this.numeroCelular= nuevoNumeroCelular;
+
+    public void setNumeroCelular(String nuevoNumeroCelular) {
+        this.numeroCelular = nuevoNumeroCelular;
     }
+
     public Reserva getReserva() {
         return reserva;
     }
+
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
     }
 
     @Override
     public String toString() {
-        return "Pasajero{"  + super.toString() + "email=" + email + ", numeroCelular=" + numeroCelular + ", reserva=" + reserva + '}';
+        return "Pasajero{" + super.toString() + "email=" + email + ", numeroCelular=" + numeroCelular + ", reserva=" + reserva + '}';
     }
 
 }

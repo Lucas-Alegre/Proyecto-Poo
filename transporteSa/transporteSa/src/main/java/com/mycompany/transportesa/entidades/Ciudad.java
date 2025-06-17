@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
 public class Ciudad {
-
 
     private String nombre;
     private ProvinciaEnum provincia;
@@ -56,7 +55,7 @@ public class Ciudad {
     public void setDestinoLista(ArrayList<Viaje> DestinoLista) {
         this.DestinoLista = DestinoLista;
     }
-    
+
     @Override
     public String toString() {
         return "Ciudad{" + "nombre=" + nombre + ", provincia=" + provincia + '}'; //+ ", OrigenLista=" + OrigenLista + ", DestinoLista=" + DestinoLista + '}';

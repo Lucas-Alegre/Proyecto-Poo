@@ -16,9 +16,9 @@ public class Chofer extends Persona {
     private List<ChoferCategoria> categorias;
     private List<Viaje> viajeLista;
 
-    public Chofer(long dni, String nombre, 
+    public Chofer(long dni, String nombre,
             String apellido, String nroLicencia,
-            List<ChoferCategoria> categorias, List<Viaje> viajeLista ) {
+            List<ChoferCategoria> categorias, List<Viaje> viajeLista) {
         super(dni, nombre, apellido);
         this.nroLicencia = nroLicencia;
         this.categorias = categorias;
@@ -49,21 +49,23 @@ public class Chofer extends Persona {
         this.viajeLista = viajeLista;
     }
 
-    public void agregarCategoria(ChoferCategoria categoria){
+    public void agregarCategoria(ChoferCategoria categoria) {
         categorias.add(categoria);
     }
+
     //El chofer tiene viajes ese dia???
     public boolean estaDisponible(String fecha) {
         for (Viaje v : viajeLista) {
             if (v.getFecha().equals(fecha)) {
-                return false; 
+                return false;
             }
         }
         return true;
     }
+
     @Override
     public String toString() {
-        return "Chofer{" +  super.toString() + "nroLicencia=" + nroLicencia + ", categorias=" + categorias + ", viajeLista=" + viajeLista + '}';
+        return "Chofer{" + super.toString() + "nroLicencia=" + nroLicencia + ", categorias=" + categorias + ", viajeLista=" + viajeLista + '}';
     }
 
 }

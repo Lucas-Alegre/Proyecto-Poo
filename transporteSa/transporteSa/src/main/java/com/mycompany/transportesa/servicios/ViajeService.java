@@ -5,9 +5,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
-
 public class ViajeService {
 
     private ArrayList<Viaje> listaViajes;
@@ -30,9 +29,9 @@ public class ViajeService {
 
     // Planificar un viaje entre dos ciudades
     public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
-                                  double precio, double distancia, double costo,
-                                  Ciudad origen, Ciudad destino,
-                                  Vehiculo vehiculo, Chofer chofer) {
+            double precio, double distancia, double costo,
+            Ciudad origen, Ciudad destino,
+            Vehiculo vehiculo, Chofer chofer) {
 
         if (!choferLibreEseDia(chofer, fecha)) {
             System.out.println("El chofer ya tiene un viaje en esa fecha.");
@@ -40,19 +39,19 @@ public class ViajeService {
         }
 
         Viaje viaje = new Viaje(
-            fecha,
-            horaSalida,
-            horaLlegada,
-            precio,
-            distancia,
-            costo,
-            EstadoDeViajeEnum.PROGRAMADO,
-            origen,
-            destino,
-            vehiculo,
-            chofer,
-            null,
-            new ArrayList<>()
+                fecha,
+                horaSalida,
+                horaLlegada,
+                precio,
+                distancia,
+                costo,
+                EstadoDeViajeEnum.PROGRAMADO,
+                origen,
+                destino,
+                vehiculo,
+                chofer,
+                null,
+                new ArrayList<>()
         );
 
         listaViajes.add(viaje);
@@ -105,8 +104,8 @@ public class ViajeService {
         boolean viajeActivo = false;
 
         for (Viaje viaje : listaViajes) {
-            if (viaje.getVehiculo().equals(colectivo) &&
-                viaje.getEstadoDeViaje() != EstadoDeViajeEnum.FINALIZADO) {
+            if (viaje.getVehiculo().equals(colectivo)
+                    && viaje.getEstadoDeViaje() != EstadoDeViajeEnum.FINALIZADO) {
 
                 viajeActivo = true;
                 System.out.println("Fecha: " + viaje.getFecha());

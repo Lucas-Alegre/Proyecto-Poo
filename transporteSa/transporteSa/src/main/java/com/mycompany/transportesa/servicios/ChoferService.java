@@ -9,22 +9,23 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
 public class ChoferService {
-     private ArrayList<Chofer> choferList;
-    
-    public ChoferService(){
-        choferList= new ArrayList<>();
+
+    private ArrayList<Chofer> choferList;
+
+    public ChoferService() {
+        choferList = new ArrayList<>();
     }
-   
+
     // registrar chofer
     public boolean registrarChofer(Chofer chofer) {
         for (Chofer c : choferList) {
             if (c.getDni() == chofer.getDni()) {
                 System.out.println("Este Chofer ha sido registrado previamente.");
                 return false;
-            }              
+            }
         }
         choferList.add(chofer);
         System.out.println("El Chofer: " + chofer + " " + " ha sido registrado con exitoso.");

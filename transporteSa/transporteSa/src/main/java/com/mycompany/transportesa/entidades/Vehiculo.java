@@ -8,9 +8,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
 public abstract class Vehiculo {
+
     private String patente;
     private int capacidad;
     private int anioFabricacion;
@@ -70,4 +71,4 @@ public abstract class Vehiculo {
         return "Vehiculo{" + "patente=" + this.getPatente() + ", capacidad=" + this.getCapacidad() + ", anioFabricacion=" + this.getAnioFabricacion() + ", kilometraje=" + this.getKilometraje() + ", viajeLista=" + this.getViajeLista() + '}';
     }
 
-  }
+}

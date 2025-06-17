@@ -6,7 +6,7 @@ package com.mycompany.transportesa.entidades;
 
 /**
  *
- * @author 
+ * @author
  */
 public enum ProvinciaEnum {
     BUENOS_AIRES,

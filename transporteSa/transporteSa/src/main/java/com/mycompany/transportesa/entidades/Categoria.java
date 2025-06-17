@@ -8,23 +8,23 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
-
-
 public class Categoria {
-    
+
     private CategoriaEnum categoria;
     ArrayList<ChoferCategoria> choferCategoriaList;
-    
-    public Categoria(CategoriaEnum categoria,  ArrayList<ChoferCategoria> choferCategoriaList){
-        this.choferCategoriaList= choferCategoriaList;
-        this.categoria=categoria;
+
+    public Categoria(CategoriaEnum categoria, ArrayList<ChoferCategoria> choferCategoriaList) {
+        this.choferCategoriaList = choferCategoriaList;
+        this.categoria = categoria;
     }
-    public CategoriaEnum getCategoria(){
+
+    public CategoriaEnum getCategoria() {
         return this.categoria;
     }
-    public void setCategoria(CategoriaEnum nuevaCategoria){
+
+    public void setCategoria(CategoriaEnum nuevaCategoria) {
         this.categoria = nuevaCategoria;
     }
 
