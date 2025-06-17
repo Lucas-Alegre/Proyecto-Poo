@@ -39,7 +39,7 @@ public class TransporteSa {
         Ciudad ciudad1 = new Ciudad("Concordia", ProvinciaEnum.ENTRE_RIOS);
         Ciudad ciudad2 = new Ciudad("Paraná", ProvinciaEnum.ENTRE_RIOS);
 
-        // 2 y 3. Planificar viajes
+        // 2. Planificar viajes
         viajeService.planificarViaje(
                 "20-06-2025", "08:00", "11:00",
                 1500, 300, 8000.0,
