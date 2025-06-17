@@ -71,8 +71,7 @@ public class PlanificadorDeViajes {
                 EstadoDeViajeEnum.PENDIENTE, origen, destino, vehiculoDisponible, choferDisponible,
                 null, new ArrayList<>());
 
-        // Agregamos el viaje al chofer
-        choferDisponible.getViajeLista().add(nuevoViaje);
+        choferDisponible.getViajeLista().add(nuevoViaje); // Agregamos el viaje al chofer
 
         return nuevoViaje;
     }
