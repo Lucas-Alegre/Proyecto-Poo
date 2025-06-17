@@ -15,29 +15,29 @@ import java.util.ArrayList;
 
 public class TransporteSa {
     public static void main(String[] args) {
-        // 1. Crear servicios
+        // Crear servicios
         ChoferService choferService = new ChoferService();
         VehiculoService vehiculoService = new VehiculoService();
         ViajeService viajeService = new ViajeService();
         InformeCantidadViajes informe = new InformeCantidadViajes();
 
-        // 2. Crear choferes
+        // 1. Crear choferes
         Chofer chofer1 = new Chofer(12345678, "Carlos", "Pérez", "ABC123", new ArrayList<>(), new ArrayList<>());
         Chofer chofer2 = new Chofer(87654321, "María", "Gómez", "XYZ789", new ArrayList<>(), new ArrayList<>());
         choferService.registrarChofer(chofer1);
         choferService.registrarChofer(chofer2);
 
-        // 3. Crear vehículos (colectivos)
+        // 1. Crear vehículos (colectivos)
         Colectivo colectivo1 = new Colectivo("AAA111", 45, 2018, 150000.5, new ArrayList<>(), true);
         Colectivo colectivo2 = new Colectivo("BBB222", 30, 2020, 90000.0, new ArrayList<>(), false);
         vehiculoService.registrarVehiculo(colectivo1);
         vehiculoService.registrarVehiculo(colectivo2);
 
-        // 4. Crear ciudades
+        //  Crear ciudades
         Ciudad ciudad1 = new Ciudad("Concordia", ProvinciaEnum.ENTRE_RIOS);
         Ciudad ciudad2 = new Ciudad("Paraná", ProvinciaEnum.ENTRE_RIOS);
 
-        // 5. Planificar viajes
+        // 2 y 3. Planificar viajes
         viajeService.planificarViaje(
                 "2025-06-20", "08:00", "11:00",
                 1500.0, 300.0, 8000.0,
@@ -52,13 +52,13 @@ public class TransporteSa {
                 colectivo2, chofer2
         );
 
-        // 6. Mostrar viajes programados con información detallada
+        // 4. Mostrar viajes programados con información detallada
         viajeService.mostrarViajesProgramadosDetallados();
 
-        // 7. Mostrar viajes asignados a un colectivo
+        // 5. Mostrar viajes asignados a un colectivo
         viajeService.mostrarViajesPorColectivoDetallado(colectivo1);
 
-        // 8. Informe de cantidad de viajes por chofer
+        // 6. Informe de cantidad de viajes por chofer
        // informe.mostrarCantidadDeViajesPorChofer(choferService.mostrarInformeCantidadViajes());
     }
 }
