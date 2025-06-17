@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class PlanificadorDeViajes {
 //3. Asociar un vehículo y un chofer a cada viaje.
 
+    //primero tenemos que buscar un chofer disponible, si ocupado=true rompemos/ deberiamos lanzar excepcion?
     public Chofer buscarChoferDisponible(ArrayList<Chofer> choferes, String fecha) {
         for (Chofer chofer : choferes) {
             boolean ocupado = false;
@@ -63,7 +64,7 @@ public class PlanificadorDeViajes {
             return null;
         }
         if (vehiculoDisponible == null) {
-            System.out.println("No vehículo disponible en la fecha " + fecha);
+            System.out.println("No vehiculo disponible en la fecha " + fecha);
             return null;
         }
 
