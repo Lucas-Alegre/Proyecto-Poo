@@ -58,8 +58,12 @@ public class PlanificadorDeViajes {
         Chofer choferDisponible = buscarChoferDisponible(choferes, fecha);
         Vehiculo vehiculoDisponible = buscarVehiculoDisponible(vehiculos, fecha, viajesExistentes);
 
-        if (choferDisponible == null || vehiculoDisponible == null) {
-            System.out.println("No hay chofer o vehículo disponible en la fecha " + fecha);
+        if (choferDisponible == null) {
+            System.out.println("No hay chofer disponible en la fecha " + fecha);
+            return null;
+        }
+        if (vehiculoDisponible == null) {
+            System.out.println("No vehículo disponible en la fecha " + fecha);
             return null;
         }
 
@@ -69,8 +73,6 @@ public class PlanificadorDeViajes {
 
         // Agregamos el viaje al chofer
         choferDisponible.getViajeLista().add(nuevoViaje);
-        // Se podría también agregar el viaje a una lista global si querés
-        viajesExistentes.add(nuevoViaje);
 
         return nuevoViaje;
     }
