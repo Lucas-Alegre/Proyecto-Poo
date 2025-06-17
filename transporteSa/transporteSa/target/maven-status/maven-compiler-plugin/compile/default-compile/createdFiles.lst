@@ -1,5 +1,4 @@
 com\mycompany\transportesa\servicios\ChoferService.class
-com\mycompany\transportesa\servicios\ReservaService.class
 com\mycompany\transportesa\entidades\Ciudad.class
 com\mycompany\transportesa\entidades\Vehiculo.class
 com\mycompany\transportesa\entidades\EstadoDeViajeEnum.class

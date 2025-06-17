@@ -25,9 +25,9 @@ public class ViajeService {
 
     public ArrayList<Viaje> getListaViajes() {
         return listaViajes;
-    }
+    } 
 
-    // Planificar un viaje entre dos ciudades
+    //2. Planificar un viaje entre dos ciudades
     public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
             double precio, double distancia, double costo,
             Ciudad origen, Ciudad destino,
@@ -69,16 +69,15 @@ public class ViajeService {
         return true;
     }
 
-    // Mostrar todos los viajes
-    public void mostrarViajes() {
+    // Mostrar todos los viajes 
+   /** public void mostrarViajes() {
         for (Viaje v : listaViajes) {
             System.out.println(v);
         }
-    }
+    }**/
 
-    // Mostrar los viajes programados con información detallada
+    //4. Mostrar los viajes programados con informacion detallada
     public void mostrarViajesProgramadosDetallados() {
-        System.out.println("-------------------- VIAJES PROGRAMADOS --------------------");
 
         for (Viaje viaje : listaViajes) {
             if (viaje.getEstadoDeViaje() == EstadoDeViajeEnum.PROGRAMADO) {
@@ -88,17 +87,15 @@ public class ViajeService {
                 System.out.println("Hasta: " + viaje.getCiudadDestino().getNombre());
                 System.out.println("Chofer: " + viaje.getChofer().getNombre() + " " + viaje.getChofer().getApellido());
                 System.out.println("Vehículo: Patente " + viaje.getVehiculo().getPatente());
-                System.out.println("Cantidad de pasajeros: " + viaje.getPasajeroLista().size());
+                System.out.println("Cantidad de pasajeros: " + viaje.getPasajeroLista().size()); // Cuando se cargue hay que hacer una validacion que no supere la cantidad de asientos del vehiculo (colectivo:60 y minibus:20)
                 System.out.println("Precio por pasajero: $" + viaje.getPrecioPorPasajero());
                 System.out.println("Estado: " + viaje.getEstadoDeViaje());
-                System.out.println("-----------------------------------------------------------------------------");
             }
         }
     }
 
-    // Informe detallado de viajes que tiene que realizar un colectivo
+    //5. Informe detallado de viajes que tiene que realizar un colectivo
     public void mostrarViajesPorColectivoDetallado(Colectivo colectivo) {
-        System.out.println("-------------------- INFORME DETALLADO DE VIAJES PARA EL COLECTIVO --------------------");
         System.out.println("Patente: " + colectivo.getPatente());
 
         boolean viajeActivo = false;
@@ -116,12 +113,12 @@ public class ViajeService {
                 System.out.println("Cantidad de pasajeros: " + viaje.getPasajeroLista().size());
                 System.out.println("Precio por pasajero: $" + viaje.getPrecioPorPasajero());
                 System.out.println("Estado: " + viaje.getEstadoDeViaje());
-                System.out.println("-----------------------------------------------------------------------------");
             }
         }
-
+       /** //ha probar :(
         if (!viajeActivo) {
-            System.out.println("No hay viajes programados o en curso para este colectivo.");
+            System.out.println("No hay viajes para este colectivo.");
         }
+        * **/
     }
 }

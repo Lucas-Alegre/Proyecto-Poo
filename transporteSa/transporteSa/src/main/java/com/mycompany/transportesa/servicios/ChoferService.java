@@ -23,15 +23,25 @@ public class ChoferService {
     public boolean registrarChofer(Chofer chofer) {
         for (Chofer c : choferList) {
             if (c.getDni() == chofer.getDni()) {
-                System.out.println("Este Chofer ha sido registrado previamente.");
+                System.out.println("este chofer ha sido registrado previamente");
                 return false;
             }
         }
         choferList.add(chofer);
-        System.out.println("El Chofer: " + chofer + " " + " ha sido registrado con exitoso.");
+        System.out.println("el chofer ha sido registrado con exitoso");
         return true;
     }
-
+    
+  //Devuelve Lista Choferes.
+     public ArrayList<Chofer> listaChoferes() {
+         ArrayList<Chofer> lista= new ArrayList<>();
+        System.out.println("Lista de choferes:");
+        for (Chofer c : choferList) {
+            lista.add(c);
+        }
+        return lista;
+    }
+     
     //mostrar chofer
     public void mostrarChoferes() {
         System.out.println("Lista de choferes:");
@@ -39,4 +49,6 @@ public class ChoferService {
             System.out.println(c);
         }
     }
+    
+  
 }

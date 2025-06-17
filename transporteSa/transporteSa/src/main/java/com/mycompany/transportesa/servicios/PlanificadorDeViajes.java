@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * @author
  */
 public class PlanificadorDeViajes {
+//3. Asociar un vehículo y un chofer a cada viaje.
 
     public Chofer buscarChoferDisponible(ArrayList<Chofer> choferes, String fecha) {
         for (Chofer chofer : choferes) {
