@@ -4,8 +4,8 @@ package com.mycompany.transportesa;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 import com.mycompany.transportesa.entidades.*;
+import com.mycompany.transportesa.excepciones.VehiculoYaRegistradoException;
 import com.mycompany.transportesa.servicios.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,17 +29,17 @@ public class TransporteSa {
         choferService.registrarChofer(chofer1);
         choferService.registrarChofer(chofer2);
 
-        // 1. Crear vehículos (colectivos)
-        Colectivo colectivo1 = new Colectivo("AAA111", 45, 2018, 150000.5, new ArrayList<>(), true);
-        Colectivo colectivo2 = new Colectivo("BBB222", 30, 2020, 90000, new ArrayList<>(), false);
-        vehiculoService.registrarVehiculo(colectivo1);
-        vehiculoService.registrarVehiculo(colectivo2);
+        try {
+            Colectivo colectivo1 = new Colectivo("AAA111", 45, 2018, 150000.5, new ArrayList<>(), true);
+            Colectivo colectivo2 = new Colectivo("BBB222", 30, 2020, 90000, new ArrayList<>(), false);
 
-        //  Crear ciudades
+            vehiculoService.registrarVehiculo(colectivo1);
+            vehiculoService.registrarVehiculo(colectivo2);
+              //  Crear ciudades
         Ciudad ciudad1 = new Ciudad("Concordia", ProvinciaEnum.ENTRE_RIOS);
         Ciudad ciudad2 = new Ciudad("Paraná", ProvinciaEnum.ENTRE_RIOS);
 
-        // 2. Planificar viajes
+             // 2. Planificar viajes
         viajeService.planificarViaje(
                 "20-06-2025", "08:00", "11:00",
                 1500, 300, 8000.0,
@@ -53,26 +53,32 @@ public class TransporteSa {
                 ciudad2, ciudad1,
                 colectivo2, chofer2
         );
+         // 5. Mostrar viajes asignados a un colectivo
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println("        Informe de viajesa realizar de un colectivo determinado");
+        System.out.println("----------------------------------------------------------------------");
+        viajeService.mostrarViajesPorColectivoDetallado(colectivo1);
 
+        } catch (VehiculoYaRegistradoException e) {
+            System.out.println("Error al registrar vehículo: " + e.getMessage());
+        }
+
+      
+       
         // 4. Mostrar viajes programados con información detallada
         System.out.println("----------------------------------------------------------------------");
         System.out.println("              Viajes programados con información detallada");
         System.out.println("----------------------------------------------------------------------");
         viajeService.mostrarViajesProgramadosDetallados();
 
-        // 5. Mostrar viajes asignados a un colectivo
-        System.out.println("----------------------------------------------------------------------");
-        System.out.println("        Informe de viajesa realizar de un colectivo determinado");
-        System.out.println("----------------------------------------------------------------------");
-        viajeService.mostrarViajesPorColectivoDetallado(colectivo1);
-
+       
         // 6. Informe de cantidad de viajes por chofer
         System.out.println("----------------------------------------------------------------------");
         System.out.println("        Informe de viajes a realizar de un colectivo determinado");
         System.out.println("----------------------------------------------------------------------");
-         HashMap<Chofer, Integer> cantidad = informe.cantidadViajesChofer(choferService.listaChoferes());
-         //DA ERROR VER 
-         //informe.mostrarCantidadDeViajesPorChofer(choferService.cantidadViajesChofer(cantidad));
-        
+        HashMap<Chofer, Integer> cantidad = informe.cantidadViajesChofer(choferService.listaChoferes());
+        //DA ERROR VER 
+        //informe.mostrarCantidadDeViajesPorChofer(choferService.cantidadViajesChofer(cantidad));
+
     }
 }

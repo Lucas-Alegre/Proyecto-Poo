@@ -5,6 +5,7 @@
 package com.mycompany.transportesa.servicios;
 
 import com.mycompany.transportesa.entidades.Chofer;
+import com.mycompany.transportesa.excepciones.ChoferYaRegistradoException;
 import java.util.ArrayList;
 
 /**
@@ -20,18 +21,16 @@ public class ChoferService {
     }
 
     // registrar chofer
-    public boolean registrarChofer(Chofer chofer) {
+    public void registrarChofer(Chofer chofer) throws ChoferYaRegistradoException {
         for (Chofer c : choferList) {
             if (c.getDni() == chofer.getDni()) {
                 System.out.println("este chofer ha sido registrado previamente");
-                return false;
             }
         }
         choferList.add(chofer);
-        System.out.println("el chofer ha sido registrado con exitoso");
-        return true;
+        System.out.println("el chofer se registro con exitoso");
     }
-    
+
   //Devuelve Lista Choferes.
      public ArrayList<Chofer> listaChoferes() {
          ArrayList<Chofer> lista= new ArrayList<>();

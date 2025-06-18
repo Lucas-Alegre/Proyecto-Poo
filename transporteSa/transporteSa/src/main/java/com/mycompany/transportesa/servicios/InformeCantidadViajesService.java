@@ -43,7 +43,7 @@ public class InformeCantidadViajesService {
     public void mostrarInformeCantidadViajes(HashMap<Chofer, Integer> informe) {
         for (Chofer chofer : informe.keySet()) {
             int cantidad = informe.get(chofer);
-            System.out.println("Chofer " + chofer.getNombre() + " " + chofer.getApellido() + " realizó " + cantidad + " viaje(s) en colectivo.");
+            System.out.println("Chofer " + chofer.getNombre() + " " + chofer.getApellido() + " realizó " + cantidad + " viaje en colectivo.");
         }
     }
 
