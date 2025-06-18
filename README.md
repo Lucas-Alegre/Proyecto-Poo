@@ -1,46 +1,32 @@
-# 🚌 Sistema de Gestión de Transporte - POO
+# 🚍 Proyecto Transporte Rutas S.A.
 
-![Java](https://img.shields.io/badge/Java-17%2B-blue)
-![GitHub](https://img.shields.io/badge/GitHub-Repository-lightgrey)
+Sistema de gestión de transporte de pasajeros, desarrollado con enfoque en **Programación Orientada a Objetos (POO)** y arquitectura por capas. Permite administrar viajes, reservas, empresas, choferes y vehículos, simulando una API interna y una interfaz de usuario por consola.
 
-Un sistema de gestión de transporte desarrollado en Java que permite planificar viajes, gestionar choferes y vehículos con validaciones de negocio.
+---
 
-## 📋 Características Principales
+## 👥 Integrantes del grupo
+- Alegre Lucas
+- Aquino Benjamín 
+- Latour Carolina
+---
 
-- ✅ Planificación inteligente de viajes
-- ✅ Validación de 8 horas de descanso para choferes
-- ✅ Gestión completa de choferes y vehículos
-- ✅ Sistema de excepciones personalizadas
-- ✅ Generación de informes
+## 🧱 Estructura del Proyecto
 
-## 🛠 Tecnologías Utilizadas
+```
+src/
+└── transportesa/
+    ├── app/               # Punto de entrada del sistema (Main.java)
+    ├── entidades/         # Clases del dominio (Empresa, Viaje, Reserva, Chofer, Vehiculo, etc.)
+    ├── servicios/         # Lógica de negocio
+    ├── controladores/     # Simulación de endpoints (GET, POST, PUT, DELETE)
+    ├── excepciones/       # Excepciones personalizadas
+    ├── configuracion/     # Configuración del sistema (modo TEST o PRODUCCIÓN)
+    └── ui/
+        ├── consola/       # Interfaz de usuario por consola
+        └── grafica/       # (En desarrollo) Interfaz gráfica
+```
+## 📌 Estado del Desarrollo
 
-- **Lenguaje**: Java 17
-- **Control de Versiones**: Git/GitHub
-- **IDE Principal**: NetBeans
-- **Paradigma**: Programación Orientada a Objetos
-
-## 🏗 Estructura del Proyecto
-Proyecto-Poo/
-├── src/
-│ ├── main/
-│ │ ├── com/
-│ │ │ └── mp/
-│ │ │ ├── models/
-│ │ │ │ ├── Chofer.java
-│ │ │ │ ├── Vehiculo.java
-│ │ │ │ └── Viaje.java
-│ │ │ ├── services/
-│ │ │ │ ├── ChoferService.java
-│ │ │ │ └── ViajeService.java
-│ │ │ ├── exceptions/
-│ │ │ │ ├── ChoferOcupadoExcepcion.java
-│ │ │ │ └── CiudadesIgualesExcepcion.java
-│ │ │ └── TransporteSa.java
-│ │ └── resources/
-│ └── test/
-├── README.md
-└── .gitignore
 ...
 
 
