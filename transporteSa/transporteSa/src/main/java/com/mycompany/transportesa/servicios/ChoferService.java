@@ -24,7 +24,7 @@ public class ChoferService {
     public void registrarChofer(Chofer chofer) throws ChoferYaRegistradoException {
         for (Chofer c : choferList) {
             if (c.getDni() == chofer.getDni()) {
-                System.out.println("este chofer ha sido registrado previamente");
+                throw new ChoferYaRegistradoException("Este chofer ya ha sido registrado");
             }
         }
         choferList.add(chofer);
