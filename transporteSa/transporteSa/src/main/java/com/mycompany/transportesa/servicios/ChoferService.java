@@ -20,34 +20,28 @@ public class ChoferService {
         choferList = new ArrayList<>();
     }
 
-    // registrar chofer
+    //Registrar chofer
     public void registrarChofer(Chofer chofer) throws ChoferYaRegistradoExcepcion {
         for (Chofer c : choferList) {
             if (c.getDni() == chofer.getDni()) {
-                throw new ChoferYaRegistradoExcepcion("Este chofer ya ha sido registrado");
+                throw new ChoferYaRegistradoExcepcion("Este chofer con Dni=" + chofer.getDni() + " ya ha sido registrado previamente");
             }
         }
         choferList.add(chofer);
-        System.out.println("el chofer se registro con exitoso");
+        System.out.println("El chofer se ha registro con exitoso");
     }
 
-  //Devuelve Lista Choferes.
-     public ArrayList<Chofer> listaChoferes() {
-         ArrayList<Chofer> lista= new ArrayList<>();
-        System.out.println("Lista de choferes:");
-        for (Chofer c : choferList) {
-            lista.add(c);
-        }
-        return lista;
+    //Devuelve la Lista de Choferes.
+    public ArrayList<Chofer> listaChoferes() {
+        return choferList;
     }
-     
-    //mostrar chofer
+
+    //Impirmir una lista de choferes
     public void mostrarChoferes() {
         System.out.println("Lista de choferes:");
         for (Chofer c : choferList) {
             System.out.println(c);
         }
     }
-    
-  
+
 }

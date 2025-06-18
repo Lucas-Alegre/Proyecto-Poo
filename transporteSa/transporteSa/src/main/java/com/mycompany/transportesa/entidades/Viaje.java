@@ -147,6 +147,10 @@ public class Viaje {
         this.pasajeroLista = pasajeroLista;
     }
 
+    public void agregarPasajero(Pasajero pasajero) {
+        pasajeroLista.add(pasajero);
+    }
+
     @Override
     public String toString() {
         return "Viaje{" + "fecha=" + fecha + ", horarioSalida=" + horarioSalida + ", horarioLlegada=" + horarioLlegada + ", precioPorPasajero=" + precioPorPasajero + ", distanciaEnKilometro=" + distanciaEnKilometro + ", costoPorKilometro=" + costoPorKilometro + ", estadoDeViaje=" + estadoDeViaje + ", ciudadOrigen=" + ciudadOrigen + ", ciudadDestino=" + ciudadDestino + ", vehiculo=" + vehiculo + ", chofer=" + chofer + ", reserva=" + reserva + ", pasajeroLista=" + pasajeroLista + '}';

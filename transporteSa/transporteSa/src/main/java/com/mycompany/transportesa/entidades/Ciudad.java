@@ -14,8 +14,8 @@ public class Ciudad {
 
     private String nombre;
     private ProvinciaEnum provincia;
-    private ArrayList<Viaje> OrigenLista;
-    private ArrayList<Viaje> DestinoLista;
+    private ArrayList<Viaje> OrigenLista; //Hace falta, creo que no tendria sentido?
+    private ArrayList<Viaje> DestinoLista;//?? - Para que lo necesitariamos?
 
     public Ciudad(String nombre, ProvinciaEnum provincia) {
         this.nombre = nombre;

@@ -20,18 +20,18 @@ public class VehiculoService {
         vehiculoList = new ArrayList<>();
     }
 
-    // registrar vehiculo
+    //Registrar un vehiculo
     public void registrarVehiculo(Vehiculo vehiculo) throws VehiculoYaRegistradoExcepcion {
         for (Vehiculo v : vehiculoList) {
             if (v.getPatente().equals(vehiculo.getPatente())) { //equals ignore case
-                throw new VehiculoYaRegistradoExcepcion("Ya existe un vehículo con la patente: " + vehiculo.getPatente());
+                throw new VehiculoYaRegistradoExcepcion("Ya existe un vehículo registrado con la patente: " + vehiculo.getPatente());
             }
         }
         vehiculoList.add(vehiculo);
-        System.out.println("el vehiculo se registro con exitoso");
+        System.out.println("El vehiculo se registro con exitoso");
     }
 
-    //mostrar vehiculo
+    //Imprimir la lista de vehiculos
     public void mostrarVehiculos() {
         System.out.println("Lista de vehículos:");
         for (Vehiculo v : vehiculoList) {

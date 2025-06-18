@@ -114,6 +114,16 @@ public class ViajeService {
         throw new ExcesoDePasajerosException("El minibús no puede transportar mas de 20 pasajeros");
     }
 }
+public void validarYAgregarPasajero(Viaje viaje, Pasajero pasajero) throws ExcesoDePasajerosException {
+        int capacidad = viaje.getVehiculo().getCapacidadMaxima();
+        if (viaje.getPasajeros().size() >= capacidad) {
+            throw new ExcepcionPasajerosExcedidos("El vehículo ya está completo.");
+        }
+
+        viaje.agregarPasajero(pasajero);
+    }
+
+    
 
     //4. Mostrar los viajes programados con informacion detallada
     public void mostrarViajesProgramadosDetallados() {
