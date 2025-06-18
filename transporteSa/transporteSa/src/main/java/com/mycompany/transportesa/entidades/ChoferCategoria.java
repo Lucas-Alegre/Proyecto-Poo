@@ -48,5 +48,6 @@ public class ChoferCategoria {
     public String toString() {
         return "ChoferCategoria{" + "fechaDeVencimiento=" + fechaDeVencimiento + ", chofer=" + chofer + ", categoria=" + categoria + '}';
     }
+    
 
 }
