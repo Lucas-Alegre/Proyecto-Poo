@@ -9,8 +9,8 @@ package com.mycompany.transportesa.excepciones;
  * @author Usuario
  */
 
-public class VehiculoYaRegistradoException extends Exception {
-    public VehiculoYaRegistradoException(String mensaje) {
+public class VehiculoYaRegistradoExcepcion extends Exception {
+    public VehiculoYaRegistradoExcepcion(String mensaje) {
         super(mensaje);
     }
 }

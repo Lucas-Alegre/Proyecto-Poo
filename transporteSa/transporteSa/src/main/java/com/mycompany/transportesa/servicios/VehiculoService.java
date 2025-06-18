@@ -5,7 +5,7 @@
 package com.mycompany.transportesa.servicios;
 
 import com.mycompany.transportesa.entidades.Vehiculo;
-import com.mycompany.transportesa.excepciones.VehiculoYaRegistradoException;
+import com.mycompany.transportesa.excepciones.VehiculoYaRegistradoExcepcion;
 import java.util.ArrayList;
 
 /**
@@ -21,10 +21,10 @@ public class VehiculoService {
     }
 
     // registrar vehiculo
-    public void registrarVehiculo(Vehiculo vehiculo) throws VehiculoYaRegistradoException {
+    public void registrarVehiculo(Vehiculo vehiculo) throws VehiculoYaRegistradoExcepcion {
         for (Vehiculo v : vehiculoList) {
             if (v.getPatente().equals(vehiculo.getPatente())) { //equals ignore case
-                throw new VehiculoYaRegistradoException("Ya existe un vehículo con la patente: " + vehiculo.getPatente());
+                throw new VehiculoYaRegistradoExcepcion("Ya existe un vehículo con la patente: " + vehiculo.getPatente());
             }
         }
         vehiculoList.add(vehiculo);

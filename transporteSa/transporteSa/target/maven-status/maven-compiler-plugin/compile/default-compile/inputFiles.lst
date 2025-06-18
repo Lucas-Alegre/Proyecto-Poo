@@ -14,9 +14,11 @@ C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporte
 C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\entidades\Vehiculo.java
 C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\entidades\Viaje.java
 C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\ChoferNoDispinibleExcepcion.java
-C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\NewClass.java
+C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\ChoferOcupadoExcepcion.java
+C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\ChoferYaRegistradoExcepcion.java
+C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\CiudadesIgualesExcepcion.java
 C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\VehiculoNoDisponibleExcepcion.java
-C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\VehiculoYaRegistradoException.java
+C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\excepciones\VehiculoYaRegistradoExcepcion.java
 C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\servicios\AsociacionVehiculoChoferService.java
 C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\servicios\ChoferService.java
 C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-Poo\transporteSa\transporteSa\src\main\java\com\mycompany\transportesa\servicios\InformeCantidadViajesService.java

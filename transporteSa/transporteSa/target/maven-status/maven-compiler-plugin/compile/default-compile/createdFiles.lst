@@ -1,8 +1,8 @@
-com\mycompany\transportesa\excepciones\NewClass.class
 com\mycompany\transportesa\servicios\ChoferService.class
 com\mycompany\transportesa\entidades\Ciudad.class
 com\mycompany\transportesa\entidades\Reserva.class
 com\mycompany\transportesa\TransporteSa.class
+com\mycompany\transportesa\excepciones\VehiculoYaRegistradoExcepcion.class
 com\mycompany\transportesa\servicios\InformeCantidadViajesService.class
 com\mycompany\transportesa\entidades\Viaje.class
 com\mycompany\transportesa\excepciones\VehiculoNoDisponibleExcepcion.class
@@ -11,7 +11,7 @@ com\mycompany\transportesa\entidades\Persona.class
 com\mycompany\transportesa\entidades\Categoria.class
 com\mycompany\transportesa\entidades\ChoferCategoria.class
 com\mycompany\transportesa\servicios\VehiculoService.class
-com\mycompany\transportesa\excepciones\VehiculoYaRegistradoException.class
+com\mycompany\transportesa\excepciones\ChoferYaRegistradoExcepcion.class
 com\mycompany\transportesa\entidades\Vehiculo.class
 com\mycompany\transportesa\entidades\EstadoDeViajeEnum.class
 com\mycompany\transportesa\entidades\Minibus.class
@@ -21,5 +21,7 @@ com\mycompany\transportesa\servicios\AsociacionVehiculoChoferService.class
 com\mycompany\transportesa\servicios\ViajeService.class
 com\mycompany\transportesa\entidades\Chofer.class
 com\mycompany\transportesa\excepciones\ChoferNoDispinibleExcepcion.class
+com\mycompany\transportesa\excepciones\CiudadesIgualesExcepcion.class
+com\mycompany\transportesa\excepciones\ChoferOcupadoExcepcion.class
 com\mycompany\transportesa\entidades\ProvinciaEnum.class
 com\mycompany\transportesa\entidades\Colectivo.class

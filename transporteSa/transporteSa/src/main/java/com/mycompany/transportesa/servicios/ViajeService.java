@@ -27,24 +27,27 @@ public class ViajeService {
 
     public ArrayList<Viaje> getListaViajes() {
         return listaViajes;
-    } 
-   
-   public void mostrarViajes() {
+    }
+
+    public void mostrarViajes() {
         for (Viaje v : listaViajes) {
             System.out.println(v);
         }
     }
-   
+
     //2. Planificar un viaje entre dos ciudades
     public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
             double precio, double distancia, double costo,
-            Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) throws ChoferOcupadoExcepcion {
-        
+            Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion {
+
         // Antes de crear el viaje, verifica que el chofer esté disponible ese día
         for (Viaje v : chofer.getViajeLista()) {
             if (v.getFecha().equals(fecha)) {
                 throw new ChoferOcupadoExcepcion("El chofer ya tiene un viaje programado para la fecha " + fecha);
             }
+        }
+        if (origen.equals(destino)) {
+            throw new CiudadesIgualesExcepcion("La ciudad de origen y destino no pueden ser la misma.");
         }
 
         // Crea el nuevo viaje con todos los datos
@@ -68,7 +71,6 @@ public class ViajeService {
         chofer.getViajeLista().add(viaje);
         return viaje;
     }
-
 
     //4. Mostrar los viajes programados con informacion detallada
     public void mostrarViajesProgramadosDetallados() {
@@ -109,10 +111,11 @@ public class ViajeService {
                 System.out.println("Estado: " + viaje.getEstadoDeViaje());
             }
         }
-    
+
         if (!tieneViajesPendientes) {
             System.out.println("No hay viajes para este colectivo.");
         }
-       
+
     }
+    //FALTA EXCEPCION: validar: que las cuidades y origen no sean iguales y  se valide si el vehículo ya está ocupado ese día
 }
