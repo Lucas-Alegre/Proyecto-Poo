@@ -9,18 +9,19 @@ import com.mycompany.transportesa.excepciones.ChoferOcupadoExcepcion;
 import com.mycompany.transportesa.excepciones.CiudadesIgualesExcepcion;
 import com.mycompany.transportesa.excepciones.VehiculoYaRegistradoExcepcion;
 import com.mycompany.transportesa.excepciones.ChoferYaRegistradoExcepcion;
+import com.mycompany.transportesa.excepciones.ExcesoDePasajerosException;
 
 import com.mycompany.transportesa.servicios.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
+ **
  * @author
  */
 public class TransporteSa {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExcesoDePasajerosException {
         // Crear servicios
         ChoferService choferService = new ChoferService();
         VehiculoService vehiculoService = new VehiculoService();
