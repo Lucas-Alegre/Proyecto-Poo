@@ -1,6 +1,8 @@
 package com.mycompany.transportesa.servicios;
 
 import com.mycompany.transportesa.entidades.*;
+import com.mycompany.transportesa.excepciones.*;
+
 import java.util.ArrayList;
 
 /**
@@ -26,18 +28,26 @@ public class ViajeService {
     public ArrayList<Viaje> getListaViajes() {
         return listaViajes;
     } 
-
+   
+   public void mostrarViajes() {
+        for (Viaje v : listaViajes) {
+            System.out.println(v);
+        }
+    }
+   
     //2. Planificar un viaje entre dos ciudades
     public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
             double precio, double distancia, double costo,
-            Ciudad origen, Ciudad destino,
-            Vehiculo vehiculo, Chofer chofer) {
-
-        if (!choferLibreEseDia(chofer, fecha)) {
-            System.out.println("El chofer ya tiene un viaje en esa fecha.");
-            return null;
+            Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) throws ChoferOcupadoExcepcion {
+        
+        // Antes de crear el viaje, verifica que el chofer esté disponible ese día
+        for (Viaje v : chofer.getViajeLista()) {
+            if (v.getFecha().equals(fecha)) {
+                throw new ChoferOcupadoExcepcion("El chofer ya tiene un viaje programado para la fecha " + fecha);
+            }
         }
 
+        // Crea el nuevo viaje con todos los datos
         Viaje viaje = new Viaje(
                 fecha,
                 horaSalida,
@@ -59,22 +69,6 @@ public class ViajeService {
         return viaje;
     }
 
-    // Verifica si el chofer está libre ese día
-    private boolean choferLibreEseDia(Chofer chofer, String fecha) {
-        for (Viaje v : chofer.getViajeLista()) {
-            if (v.getFecha().equals(fecha)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Mostrar todos los viajes 
-   /** public void mostrarViajes() {
-        for (Viaje v : listaViajes) {
-            System.out.println(v);
-        }
-    }**/
 
     //4. Mostrar los viajes programados con informacion detallada
     public void mostrarViajesProgramadosDetallados() {
@@ -98,13 +92,13 @@ public class ViajeService {
     public void mostrarViajesPorColectivoDetallado(Colectivo colectivo) {
         System.out.println("Patente: " + colectivo.getPatente());
 
-        boolean viajeActivo = false;
+        boolean tieneViajesPendientes = false;
 
         for (Viaje viaje : listaViajes) {
             if (viaje.getVehiculo().equals(colectivo)
                     && viaje.getEstadoDeViaje() != EstadoDeViajeEnum.FINALIZADO) {
 
-                viajeActivo = true;
+                tieneViajesPendientes = true;
                 System.out.println("Fecha: " + viaje.getFecha());
                 System.out.println("Horario salida: " + viaje.getHorarioSalida());
                 System.out.println("Ciudad origen: " + viaje.getCiudadOrigen().getNombre());
@@ -115,10 +109,10 @@ public class ViajeService {
                 System.out.println("Estado: " + viaje.getEstadoDeViaje());
             }
         }
-       /** //ha probar :(
-        if (!viajeActivo) {
+    
+        if (!tieneViajesPendientes) {
             System.out.println("No hay viajes para este colectivo.");
         }
-        * **/
+       
     }
 }
