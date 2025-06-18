@@ -2,6 +2,8 @@ package com.mycompany.transportesa.servicios;
 
 import com.mycompany.transportesa.entidades.*;
 import com.mycompany.transportesa.excepciones.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 
@@ -37,21 +39,36 @@ public class ViajeService {
 
     //2. Planificar un viaje entre dos ciudades
     public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
-            double precio, double distancia, double costo,
-            Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion, ExcesoDePasajerosException {
+        double precio, double distancia, double costo,
+        Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) 
+        throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion, ExcesoDePasajerosException {
 
-        // Antes de crear el viaje, verifica que el chofer esté disponible ese día
-        for (Viaje v : chofer.getViajeLista()) {
-            if (v.getFecha().equals(fecha)) {
-                throw new ChoferOcupadoExcepcion("El chofer ya tiene un viaje programado para la fecha " + fecha);
-            }
-        }
-            
-        if (origen.equals(destino)) {
-            throw new CiudadesIgualesExcepcion("La ciudad de origen y destino no pueden ser la misma.");
-        }
+    // Convertir fechas  QUE SON TIPO STRING DE ENTRADA (Esto lo tuve que googlear porque no tenia idea) a LocalDateTime para comparación
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    LocalDateTime nuevaSalida = LocalDateTime.parse(fecha + " " + horaSalida, formatter);
+    LocalDateTime nuevaLlegada = LocalDateTime.parse(fecha + " " + horaLlegada, formatter);
 
-        // Crea el nuevo viaje con todos los datos
+    // Validar disponibilidad del chofer considerando tiempo entre viajes
+    for (Viaje viajeExistente : chofer.getViajeLista()) {
+        LocalDateTime salidaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioSalida(), formatter);
+        LocalDateTime llegadaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioLlegada(), formatter);
+
+        // Verificar que no se superponga o menos de 8 horas de descanso la cagada es que si pasaron 7:59 y no 8 tambien tira pero ta bien creo...
+        if (nuevaSalida.isBefore(llegadaExistente.plusHours(8)) && 
+            nuevaLlegada.isAfter(salidaExistente.minusHours(8))) {
+            throw new ChoferOcupadoExcepcion(
+                "El chofer no está disponible. Requiere 8 horas de descanso después del viaje del " + 
+                viajeExistente.getFecha() + " (" + viajeExistente.getHorarioSalida() + " - " + 
+                viajeExistente.getHorarioLlegada() + ")"
+            );
+        }
+    }
+
+    if (origen.equals(destino)) {
+        throw new CiudadesIgualesExcepcion("La ciudad de origen y destino no pueden ser la misma.");
+    }
+
+     // Crea el nuevo viaje con todos los datos
         Viaje viaje = new Viaje(
                 fecha,
                 horaSalida,

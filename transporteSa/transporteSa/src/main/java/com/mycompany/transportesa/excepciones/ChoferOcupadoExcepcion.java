@@ -11,7 +11,7 @@ package com.mycompany.transportesa.excepciones;
 
 public class ChoferOcupadoExcepcion extends Exception {
     public ChoferOcupadoExcepcion(String mensaje) {
-        super(mensaje);
+        super("ERROR: No se puede asignar el viaje. " + mensaje);
     }
 }
 

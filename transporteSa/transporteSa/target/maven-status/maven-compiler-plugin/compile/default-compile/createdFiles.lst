@@ -10,6 +10,7 @@ com\mycompany\transportesa\entidades\CategoriaEnum.class
 com\mycompany\transportesa\entidades\Persona.class
 com\mycompany\transportesa\entidades\Categoria.class
 com\mycompany\transportesa\entidades\ChoferCategoria.class
+com\mycompany\transportesa\excepciones\ExcesoDePasajerosException.class
 com\mycompany\transportesa\servicios\VehiculoService.class
 com\mycompany\transportesa\excepciones\ChoferYaRegistradoExcepcion.class
 com\mycompany\transportesa\entidades\Vehiculo.class

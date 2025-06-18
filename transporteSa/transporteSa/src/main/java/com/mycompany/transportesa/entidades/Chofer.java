@@ -4,6 +4,8 @@
  */
 package com.mycompany.transportesa.entidades;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -54,18 +56,23 @@ public class Chofer extends Persona {
     }
 
     //El chofer tiene viajes ese dia???
-    public boolean estaDisponible(String fecha) {
-        for (Viaje v : viajeLista) {
-            if (v.getFecha().equals(fecha)) {
-                return false;
-            }
-        }
-        return true;
-    }
+    public boolean estaDisponible(String fecha, String horaSalida, String horaLlegada) {
+           //Transformo todo los String a tipo LocalDateTime para tratar fecha y hora en su conjunto
+           //formatter es el nombre del formateador mucha imaginacion no tengo
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            LocalDateTime nuevaSalida = LocalDateTime.parse(fecha + " " + horaSalida, formatter);
+            LocalDateTime nuevaLlegada = LocalDateTime.parse(fecha + " " + horaLlegada, formatter);
 
-    @Override
-    public String toString() {
-        return "Chofer{" + super.toString() + "nroLicencia=" + nroLicencia + ", categorias=" + categorias + ", viajeLista=" + viajeLista + '}';
+            for (Viaje v : viajeLista) {
+                LocalDateTime salidaExistente = LocalDateTime.parse(v.getFecha() + " " + v.getHorarioSalida(), formatter);
+                LocalDateTime llegadaExistente = LocalDateTime.parse(v.getFecha() + " " + v.getHorarioLlegada(), formatter);
+
+                if(nuevaSalida.isBefore(llegadaExistente.plusHours(8))) {
+                    return false;
+                } else {
+                }
+            }
+            return true;
     }
 
 }
