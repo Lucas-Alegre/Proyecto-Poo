@@ -38,7 +38,7 @@ public class ViajeService {
     //2. Planificar un viaje entre dos ciudades
     public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
             double precio, double distancia, double costo,
-            Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion {
+            Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion, ExcesoDePasajerosException {
 
         // Antes de crear el viaje, verifica que el chofer esté disponible ese día
         for (Viaje v : chofer.getViajeLista()) {
@@ -46,6 +46,7 @@ public class ViajeService {
                 throw new ChoferOcupadoExcepcion("El chofer ya tiene un viaje programado para la fecha " + fecha);
             }
         }
+            
         if (origen.equals(destino)) {
             throw new CiudadesIgualesExcepcion("La ciudad de origen y destino no pueden ser la misma.");
         }
@@ -66,11 +67,27 @@ public class ViajeService {
                 null,
                 new ArrayList<>()
         );
-
+        //llamamos al metodo que valida capacidad de pasajeros antes de agregar la lista a viajes
+        validarCapacidadVehiculo(viaje);
+        //se agrega el viaje si esta todo ok
         listaViajes.add(viaje);
-        chofer.getViajeLista().add(viaje);
+        //se suma el viaje a la lista de chofer
+        chofer.getViajeLista().add(viaje); 
         return viaje;
     }
+    
+    //Valida si un colectivo tiene menos de 60 pasajeros y un minibus menos de 20 pasajeros.
+    public void validarCapacidadVehiculo(Viaje viaje) throws ExcesoDePasajerosException {
+    int cantidadPasajeros = viaje.getPasajeroLista().size();
+
+    if (viaje.getVehiculo() instanceof Colectivo && cantidadPasajeros > 60) {
+        throw new ExcesoDePasajerosException("El colectivo no puede transportar mas de 60 pasajeros.");
+    }
+
+    if (viaje.getVehiculo() instanceof Minibus && cantidadPasajeros > 20) {
+        throw new ExcesoDePasajerosException("El minibús no puede transportar mas de 20 pasajeros");
+    }
+}
 
     //4. Mostrar los viajes programados con informacion detallada
     public void mostrarViajesProgramadosDetallados() {
@@ -89,7 +106,7 @@ public class ViajeService {
             }
         }
     }
-
+    
     //5. Informe detallado de viajes que tiene que realizar un colectivo
     public void mostrarViajesPorColectivoDetallado(Colectivo colectivo) {
         System.out.println("Patente: " + colectivo.getPatente());
@@ -117,5 +134,4 @@ public class ViajeService {
         }
 
     }
-    //FALTA EXCEPCION: validar: que las cuidades y origen no sean iguales y  se valide si el vehículo ya está ocupado ese día
 }
