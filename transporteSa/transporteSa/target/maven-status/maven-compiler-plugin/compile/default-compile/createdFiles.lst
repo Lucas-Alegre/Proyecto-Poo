@@ -1,4 +1,5 @@
 com\mycompany\transportesa\servicios\ChoferService.class
+com\mycompany\transportesa\servicios\ReservaService.class
 com\mycompany\transportesa\entidades\Ciudad.class
 com\mycompany\transportesa\entidades\Reserva.class
 com\mycompany\transportesa\TransporteSa.class
@@ -8,6 +9,7 @@ com\mycompany\transportesa\entidades\Viaje.class
 com\mycompany\transportesa\excepciones\VehiculoNoDisponibleExcepcion.class
 com\mycompany\transportesa\entidades\CategoriaEnum.class
 com\mycompany\transportesa\entidades\Persona.class
+com\mycompany\transportesa\servicios\PasajeroService.class
 com\mycompany\transportesa\entidades\Categoria.class
 com\mycompany\transportesa\entidades\ChoferCategoria.class
 com\mycompany\transportesa\excepciones\ExcesoDePasajerosException.class

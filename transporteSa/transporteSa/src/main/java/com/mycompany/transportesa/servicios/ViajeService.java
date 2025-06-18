@@ -114,10 +114,10 @@ public class ViajeService {
         throw new ExcesoDePasajerosException("El minibús no puede transportar mas de 20 pasajeros");
     }
 }
-public void validarYAgregarPasajero(Viaje viaje, Pasajero pasajero) throws ExcesoDePasajerosException {
-        int capacidad = viaje.getVehiculo().getCapacidadMaxima();
-        if (viaje.getPasajeros().size() >= capacidad) {
-            throw new ExcepcionPasajerosExcedidos("El vehículo ya está completo.");
+    public void validarYAgregarPasajero(Viaje viaje, Pasajero pasajero) throws ExcesoDePasajerosException {
+        int capacidad = viaje.getVehiculo().getCapacidad();
+        if (viaje.getPasajeroLista().size() >= capacidad) {
+            throw new ExcesoDePasajerosException("El vehículo ya está completo.");
         }
 
         viaje.agregarPasajero(pasajero);

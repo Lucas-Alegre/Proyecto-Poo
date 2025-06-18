@@ -20,6 +20,13 @@ public class Pasajero extends Persona {
         this.numeroCelular = numeroCelular;
         this.reserva = reserva;
     }
+    public Pasajero(long dni, String nombre, String apellido, String email, String numeroCelular) {
+        super(dni, nombre, apellido);
+        this.email = email;
+        this.numeroCelular = numeroCelular;
+        this.reserva = null;
+    }
+
 
     public String getEmail() {
         return this.email;

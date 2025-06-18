@@ -27,6 +27,10 @@ public class TransporteSa {
         VehiculoService vehiculoService = new VehiculoService();
         ViajeService viajeService = new ViajeService();
         InformeCantidadViajesService informe = new InformeCantidadViajesService();
+        PasajeroService pasajeroService = new PasajeroService(viajeService);
+        ReservaService reservaService = new ReservaService(viajeService);
+        
+        
         
         // 1. Crear choferes
         Chofer chofer1 = new Chofer(12345678, "Carlos", "Pérez", "ABC123", new ArrayList<>(), new ArrayList<>());
@@ -38,7 +42,7 @@ public class TransporteSa {
             System.out.println("Error al registrar chofer: " + e.getMessage());
         }
         try {
-            Colectivo colectivo1 = new Colectivo("AAA111", 45, 2018, 150000.5, new ArrayList<>(), true);
+            Colectivo colectivo1 = new Colectivo("AAA111", 1, 2018, 150000.5, new ArrayList<>(), true);
             Colectivo colectivo2 = new Colectivo("BBB222", 30, 2020, 90000, new ArrayList<>(), false);
 
             vehiculoService.registrarVehiculo(colectivo1);
@@ -48,16 +52,26 @@ public class TransporteSa {
             Ciudad ciudad2 = new Ciudad("Paraná", ProvinciaEnum.ENTRE_RIOS);
             
             
+            //Se agregan pasajeros
+            Pasajero pasajero1 = new Pasajero(427363535,"Lucas", "Alegre", "lucas@gmail.cim", "050937434");
+            Pasajero pasajero2 = new Pasajero(411665745,"Ricardo", "Arjona", "riocardeli@gmail.cim", "3454634");
+            //Registro de pasajeros, sin viajes ni nada asignado.
+            pasajeroService.registrarPasajeros(pasajero1);
+            pasajeroService.registrarPasajeros(pasajero2);
             
-            viajeService.planificarViaje(
+            //Etse viaje esta creado si o si
+            Viaje PrimerViaje = viajeService.planificarViaje(
                         "20-06-2025", "23:00", "07:00",
                         1500, 300, 8000.0,
                         ciudad1, ciudad2,
                         colectivo1, chofer1
             );
-
+            //Crear una reserva para un pasajero en un viaje si es posible.
+            reservaService.realizarReserva(pasajero1, PrimerViaje);//Salio_ok
+            reservaService.realizarReserva(pasajero2, PrimerViaje);
+            
             // Este fallará si es menos de 8 horas después 
-           viajeService.planificarViaje(
+            viajeService.planificarViaje(
                         "21-06-2025", "10:00", "12:00",
                         1300, 250.0, 7000,
                         ciudad2, ciudad1,
