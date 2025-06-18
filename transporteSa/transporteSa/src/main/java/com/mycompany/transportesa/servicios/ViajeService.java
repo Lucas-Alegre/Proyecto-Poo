@@ -42,55 +42,64 @@ public class ViajeService {
         double precio, double distancia, double costo,
         Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer) 
         throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion, ExcesoDePasajerosException {
-
-    // Convertir fechas  QUE SON TIPO STRING DE ENTRADA (Esto lo tuve que googlear porque no tenia idea) a LocalDateTime para comparación
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-    LocalDateTime nuevaSalida = LocalDateTime.parse(fecha + " " + horaSalida, formatter);
-    LocalDateTime nuevaLlegada = LocalDateTime.parse(fecha + " " + horaLlegada, formatter);
-
-    // Validar disponibilidad del chofer considerando tiempo entre viajes
-    for (Viaje viajeExistente : chofer.getViajeLista()) {
-        LocalDateTime salidaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioSalida(), formatter);
-        LocalDateTime llegadaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioLlegada(), formatter);
-
-        // Verificar que no se superponga o menos de 8 horas de descanso la cagada es que si pasaron 7:59 y no 8 tambien tira pero ta bien creo...
-        if (nuevaSalida.isBefore(llegadaExistente.plusHours(8)) && 
-            nuevaLlegada.isAfter(salidaExistente.minusHours(8))) {
-            throw new ChoferOcupadoExcepcion(
-                "El chofer no está disponible. Requiere 8 horas de descanso después del viaje del " + 
-                viajeExistente.getFecha() + " (" + viajeExistente.getHorarioSalida() + " - " + 
-                viajeExistente.getHorarioLlegada() + ")"
-            );
+        
+        // Convertir fechas  QUE SON TIPO STRING DE ENTRADA (Esto lo tuve que googlear porque no tenia idea) a LocalDateTime para comparación
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDateTime nuevaSalida = LocalDateTime.parse(fecha + " " + horaSalida, formatter);
+        LocalDateTime nuevaLlegada = LocalDateTime.parse(fecha + " " + horaLlegada, formatter);
+       
+        //sin esto hay error cuandos se pasa de dia //suma un dia si pasa eso
+        if(nuevaLlegada.isBefore(nuevaSalida)){
+            nuevaLlegada = nuevaLlegada.plusDays(1);
         }
-    }
+        
+        // Validar disponibilidad del chofer considerando tiempo entre viajes
+        for (Viaje viajeExistente : chofer.getViajeLista()) {
+            LocalDateTime salidaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioSalida(), formatter);
+            LocalDateTime llegadaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioLlegada(), formatter);
+            
+            
+            // Ajuste para viajes existentes que cruzan medianoche
+            if (llegadaExistente.isBefore(salidaExistente)) {
+                llegadaExistente = llegadaExistente.plusDays(1);
+            }
+            //Validacion para 8 horas de descanso
+            boolean tieneDescansoSuficiente = nuevaSalida.isAfter(llegadaExistente.plusHours(8)) || nuevaSalida.equals(llegadaExistente.plusHours(8));
+            boolean noInterfiereConViajeAnterior = nuevaLlegada.isBefore(salidaExistente.minusHours(8)) || nuevaLlegada.equals(salidaExistente.minusHours(8));
 
-    if (origen.equals(destino)) {
-        throw new CiudadesIgualesExcepcion("La ciudad de origen y destino no pueden ser la misma.");
-    }
+            if (!(tieneDescansoSuficiente || noInterfiereConViajeAnterior)) {
+                throw new ChoferOcupadoExcepcion("El chofer no está disponible. Requiere mínimo 8 horas de descanso. "+"Último viaje programado: " + viajeExistente.getFecha() + " " + viajeExistente.getHorarioSalida() + " - " + viajeExistente.getHorarioLlegada() + ". Intento de asignar: " + fecha + " " + horaSalida + " - " + horaLlegada);
+            }
+        }
 
-     // Crea el nuevo viaje con todos los datos
-        Viaje viaje = new Viaje(
-                fecha,
-                horaSalida,
-                horaLlegada,
-                precio,
-                distancia,
-                costo,
-                EstadoDeViajeEnum.PROGRAMADO,
-                origen,
-                destino,
-                vehiculo,
-                chofer,
-                null,
-                new ArrayList<>()
-        );
-        //llamamos al metodo que valida capacidad de pasajeros antes de agregar la lista a viajes
-        validarCapacidadVehiculo(viaje);
-        //se agrega el viaje si esta todo ok
-        listaViajes.add(viaje);
-        //se suma el viaje a la lista de chofer
-        chofer.getViajeLista().add(viaje); 
-        return viaje;
+
+        if (origen.equals(destino)) {
+            throw new CiudadesIgualesExcepcion("La ciudad de origen y destino no pueden ser la misma.");
+        }
+
+         // Crea el nuevo viaje con todos los datos
+            Viaje viaje = new Viaje(
+                    fecha,
+                    horaSalida,
+                    horaLlegada,
+                    precio,
+                    distancia,
+                    costo,
+                    EstadoDeViajeEnum.PROGRAMADO,
+                    origen,
+                    destino,
+                    vehiculo,
+                    chofer,
+                    null,
+                    new ArrayList<>()
+            );
+            //llamamos al metodo que valida capacidad de pasajeros antes de agregar la lista a viajes
+            validarCapacidadVehiculo(viaje);
+            //se agrega el viaje si esta todo ok
+            listaViajes.add(viaje);
+            //se suma el viaje a la lista de chofer
+            chofer.getViajeLista().add(viaje); 
+            return viaje;
     }
     
     //Valida si un colectivo tiene menos de 60 pasajeros y un minibus menos de 20 pasajeros.

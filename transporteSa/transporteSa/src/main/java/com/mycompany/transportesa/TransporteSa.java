@@ -50,7 +50,7 @@ public class TransporteSa {
             
             
             viajeService.planificarViaje(
-                        "20-06-2025", "22:00", "23:00",
+                        "20-06-2025", "23:00", "07:00",
                         1500, 300, 8000.0,
                         ciudad1, ciudad2,
                         colectivo1, chofer1
@@ -58,7 +58,7 @@ public class TransporteSa {
 
             // Este fallará si es menos de 8 horas después 
            viajeService.planificarViaje(
-                        "21-06-2025", "06:00", "12:00",
+                        "21-06-2025", "10:00", "12:00",
                         1300, 250.0, 7000,
                         ciudad2, ciudad1,
                         colectivo2, chofer1
@@ -99,13 +99,13 @@ public class TransporteSa {
         System.out.println("----------------------------------------------------------------------");
         viajeService.mostrarViajesProgramadosDetallados();
 
-        // 6. Informe de cantidad de viajes por chofer
+         // 6. Informe de cantidad de viajes por chofer
         System.out.println("----------------------------------------------------------------------");
         System.out.println("        Informe de viajes a realizar de un colectivo determinado");
         System.out.println("----------------------------------------------------------------------");
+
         HashMap<Chofer, Integer> cantidad = informe.cantidadViajesChofer(choferService.listaChoferes());
-        //DA ERROR VER 
-        //informe.mostrarCantidadDeViajesPorChofer(choferService.cantidadViajesChofer(cantidad));
+        informe.mostrarInformeCantidadViajes(cantidad);
 
     }
 }
