@@ -46,8 +46,24 @@ public class TransporteSa {
 
             Ciudad ciudad1 = new Ciudad("Concordia", ProvinciaEnum.ENTRE_RIOS);
             Ciudad ciudad2 = new Ciudad("Paraná", ProvinciaEnum.ENTRE_RIOS);
-
+            
+            
+            
             viajeService.planificarViaje(
+                        "20-06-2025", "22:00", "23:00",
+                        1500, 300, 8000.0,
+                        ciudad1, ciudad2,
+                        colectivo1, chofer1
+            );
+
+            // Este fallará si es menos de 8 horas después 
+           viajeService.planificarViaje(
+                        "21-06-2025", "06:00", "12:00",
+                        1300, 250.0, 7000,
+                        ciudad2, ciudad1,
+                        colectivo2, chofer1
+            );
+            /*viajeService.planificarViaje(
                     "20-06-2025", "08:00", "11:00",
                     1500, 300, 8000.0,
                     ciudad1, ciudad2,
@@ -59,28 +75,9 @@ public class TransporteSa {
                     1300, 250.0, 7000,
                     ciudad2, ciudad1,
                     colectivo2, chofer2
-            );
+            );*/
             //BENJA IMPLEMENTACION  
             //TEST DE PRUEBA DE IMPLEMENTACION DE QUE NO SUPERPONGAN VIAJES A UN MISMO CHOFER Y UN CHOFER DEBA DESCANSAR AL MENOS 8 HORAS
-        try {
-              viajeService.planificarViaje(
-                    "20-06-2025", "08:00", "16:00",
-                    1500, 300, 8000.0,
-                    ciudad1, ciudad2,
-                    colectivo1, chofer1
-                );
-
-                // Este fallará si es menos de 8 horas después
-                viajeService.planificarViaje(
-                        "20-06-2025", "17:00", "20:00",
-                        1300, 250.0, 7000,
-                        ciudad2, ciudad1,
-                        colectivo2, chofer1
-                );
-        } catch (ChoferOcupadoExcepcion e) {
-                System.out.println(e.getMessage());
-                // Mostrará: "No se puede asignar el viaje. El chofer no está disponible..."
-            }
         
         
             System.out.println("----------------------------------------------------------------------");
