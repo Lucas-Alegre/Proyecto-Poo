@@ -68,7 +68,8 @@ public abstract class Vehiculo {
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "patente=" + this.getPatente() + ", capacidad=" + this.getCapacidad() + ", anioFabricacion=" + this.getAnioFabricacion() + ", kilometraje=" + this.getKilometraje() + ", viajeLista=" + this.getViajeLista() + '}';
+        return "Vehiculo{" + "patente=" + this.getPatente() + ", capacidad=" + this.getCapacidad() + ", anioFabricacion=" + this.getAnioFabricacion() + ", kilometraje=" + this.getKilometraje() + ", viajeLista=" + (viajeLista != null ? viajeLista.size() : 0) +
+            '}';//Si se trae un toString de aca va a romper
     }
 
 }

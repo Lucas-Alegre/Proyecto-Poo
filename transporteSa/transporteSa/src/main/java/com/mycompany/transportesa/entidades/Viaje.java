@@ -43,6 +43,19 @@ public class Viaje {
         this.pasajeroLista = pasajeroLista;
     }
 
+    public Viaje(String fecha, String horarioSalida, String horarioLlegada, double precioPorPasajero, double distanciaEnKilometro, double costoPorKilometro, EstadoDeViajeEnum estadoDeViaje, Ciudad ciudadOrigen, Ciudad ciudadDestino){
+        this.fecha = fecha;
+        this.horarioSalida = horarioSalida;
+        this.horarioLlegada = horarioLlegada;
+        this.precioPorPasajero = precioPorPasajero;
+        this.distanciaEnKilometro = distanciaEnKilometro;
+        this.costoPorKilometro = costoPorKilometro;
+        this.estadoDeViaje = estadoDeViaje;
+        this.ciudadOrigen = ciudadOrigen;
+        this.ciudadDestino = ciudadDestino;
+    }
+    
+    
     public String getFecha() {
         return fecha;
     }

@@ -59,24 +59,36 @@ public class TransporteSa {
             pasajeroService.registrarPasajeros(pasajero1);
             pasajeroService.registrarPasajeros(pasajero2);
             
-            //Etse viaje esta creado si o si
+            //Etse viaje esta creado si o si con constructor Extenso
             Viaje PrimerViaje = viajeService.planificarViaje(
                         "20-06-2025", "23:00", "07:00",
                         1500, 300, 8000.0,
                         ciudad1, ciudad2,
                         colectivo1, chofer1
             );
+            
+            Viaje ViajeSinChoferNiVehiculoAsignado = viajeService.crearUnViaje(
+                        "18-06-2025", "21:00", "22:00",
+                        1500, 300, 8000.0,
+                        ciudad1, ciudad2
+            );
+            
+            System.out.println("EL VIAJE CREADOR SIN CHOFER NI VEHICULO ES: " + ViajeSinChoferNiVehiculoAsignado);
+            viajeService.asignarChoferAUnViaje(ViajeSinChoferNiVehiculoAsignado, chofer2);
+            viajeService.asignarVehiculoAUnViaje(colectivo1, ViajeSinChoferNiVehiculoAsignado);
+            
+            
             //Crear una reserva para un pasajero en un viaje si es posible.
             reservaService.realizarReserva(pasajero1, PrimerViaje);//Salio_ok
             reservaService.realizarReserva(pasajero2, PrimerViaje);
             
             // Este fallará si es menos de 8 horas después 
-            viajeService.planificarViaje(
+             /*viajeService.planificarViaje(
                         "21-06-2025", "10:00", "12:00",
                         1300, 250.0, 7000,
                         ciudad2, ciudad1,
                         colectivo2, chofer1
-            );
+            );*/
             /*viajeService.planificarViaje(
                     "20-06-2025", "08:00", "11:00",
                     1500, 300, 8000.0,
