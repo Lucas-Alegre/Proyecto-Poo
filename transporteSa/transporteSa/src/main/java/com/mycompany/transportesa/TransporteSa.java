@@ -44,21 +44,21 @@ public class TransporteSa {
         Chofer chofer9 = new Chofer(77777777, "Tomás", "García", "LIC007", new ArrayList<>(), new ArrayList<>());
         Chofer chofer10 = new Chofer(88888888, "Lucía", "Morales", "LIC008", new ArrayList<>(), new ArrayList<>());
 
-        /**try {
-            choferService.registrarChofer(chofer1);
-            choferService.registrarChofer(chofer2);
-            choferService.registrarChofer(chofer3);
-            choferService.registrarChofer(chofer4);
-            choferService.registrarChofer(chofer5);
-            choferService.registrarChofer(chofer6);
-            choferService.registrarChofer(chofer7);
-            choferService.registrarChofer(chofer8);
-            choferService.registrarChofer(chofer9);
-            choferService.registrarChofer(chofer10);
-        } catch (ChoferYaRegistradoExcepcion e) {
-            System.out.println("Error al registrar chofer: " + e.getMessage());
-        }**/
-
+        /**
+         * try { choferService.registrarChofer(chofer1);
+         * choferService.registrarChofer(chofer2);
+         * choferService.registrarChofer(chofer3);
+         * choferService.registrarChofer(chofer4);
+         * choferService.registrarChofer(chofer5);
+         * choferService.registrarChofer(chofer6);
+         * choferService.registrarChofer(chofer7);
+         * choferService.registrarChofer(chofer8);
+         * choferService.registrarChofer(chofer9);
+         * choferService.registrarChofer(chofer10); } catch
+         * (ChoferYaRegistradoExcepcion e) { System.out.println("Error al
+         * registrar chofer: " + e.getMessage());
+        }*
+         */
         // Crear colectivos
         Colectivo col1 = new Colectivo("AAA111", 50, 2020, 150000, new ArrayList<>(), true);
         Colectivo col2 = new Colectivo("BBB222", 45, 2019, 140000, new ArrayList<>(), false);
@@ -141,7 +141,11 @@ public class TransporteSa {
 
             case 4:
                 System.out.println("Mostrar viajes programados detalladamente...");
-                // viajeService.mostrarViajesProgramadosDetallados();
+                // 4. Mostrar viajes programados con información detallada
+                System.out.println("----------------------------------------------------------------------");
+                System.out.println("              Viajes programados con información detallada");
+                System.out.println("----------------------------------------------------------------------");
+                viajeService.mostrarViajesProgramadosDetallados();
                 break;
 
             case 5:
@@ -151,8 +155,13 @@ public class TransporteSa {
 
             case 6:
                 System.out.println("Informe de cantidad de viajes por chofer...");
-                // HashMap<Chofer, Integer> cantidad = informe.cantidadViajesChofer(choferService.listaChoferes());
-                // informe.mostrarInformeCantidadViajes(cantidad);
+                // 6. Informe de cantidad de viajes por chofer
+                System.out.println("----------------------------------------------------------------------");
+                System.out.println("        Informe de viajes a realizar de un colectivo determinado");
+                System.out.println("----------------------------------------------------------------------");
+
+                HashMap<Chofer, Integer> cantidad = informe.cantidadViajesChofer(choferService.listaChoferes());
+                informe.mostrarInformeCantidadViajes(cantidad);
                 break;
 
             default:
@@ -161,7 +170,6 @@ public class TransporteSa {
 
         scanner.close();
 
-        
         try {
             Colectivo colectivo1 = new Colectivo("AAA111", 45, 2018, 150000.5, new ArrayList<>(), true);
             Colectivo colectivo2 = new Colectivo("BBB222", 30, 2020, 90000, new ArrayList<>(), false);
@@ -204,7 +212,7 @@ public class TransporteSa {
                     ciudad2, ciudad1,
                     colectivo2, chofer2
             );*/
-            //BENJA IMPLEMENTACION  
+
             //TEST DE PRUEBA DE IMPLEMENTACION DE QUE NO SUPERPONGAN VIAJES A UN MISMO CHOFER Y UN CHOFER DEBA DESCANSAR AL MENOS 8 HORAS
 
             System.out.println("----------------------------------------------------------------------");
@@ -220,18 +228,5 @@ public class TransporteSa {
             System.out.println("Error al registrar cuidad origen y destino iguales: " + e.getMessage());
         }
 
-        // 4. Mostrar viajes programados con información detallada
-        System.out.println("----------------------------------------------------------------------");
-        System.out.println("              Viajes programados con información detallada");
-        System.out.println("----------------------------------------------------------------------");
-        viajeService.mostrarViajesProgramadosDetallados();
-
-        // 6. Informe de cantidad de viajes por chofer
-        System.out.println("----------------------------------------------------------------------");
-        System.out.println("        Informe de viajes a realizar de un colectivo determinado");
-        System.out.println("----------------------------------------------------------------------");
-
-        HashMap<Chofer, Integer> cantidad = informe.cantidadViajesChofer(choferService.listaChoferes());
-        informe.mostrarInformeCantidadViajes(cantidad);
     }
 }
