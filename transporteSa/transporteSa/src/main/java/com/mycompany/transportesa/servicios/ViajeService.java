@@ -43,7 +43,7 @@ public class ViajeService {
 
     public Viaje crearUnViaje(String fecha, String horaSalida, String horaLlegada,
             double precio, double distancia, double costo,
-            Ciudad origen, Ciudad destino) throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion, ExcesoDePasajerosException {
+            Ciudad origen, Ciudad destino) throws CiudadesIgualesExcepcion{
 
         if (origen.equals(destino)) {
             throw new CiudadesIgualesExcepcion("La ciudad de origen y destino no pueden ser la misma.");
