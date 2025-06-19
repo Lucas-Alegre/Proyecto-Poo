@@ -184,7 +184,7 @@ public class ViajeService {
 
     public void validarYAgregarPasajero(Viaje viaje, Pasajero pasajero) throws ExcesoDePasajerosException {
         int capacidad = viaje.getVehiculo().getCapacidad();
-        if (viaje.getPasajeroLista().size() >= capacidad) {
+        if (viaje.getPasajeroLista().size() >= capacidad){
             throw new ExcesoDePasajerosException("El vehículo ya está completo.");
         }
 
