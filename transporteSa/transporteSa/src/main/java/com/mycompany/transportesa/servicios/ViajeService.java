@@ -37,8 +37,35 @@ public class ViajeService {
         }
     }
 
-    public void asignarVehiculoAUnViaje(Viaje viaje, Vehiculo vehiculo) {
+    public void asignarVehiculoAUnViaje(Viaje viaje, Vehiculo vehiculo) throws VehiculoNoDisponibleExcepcion {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+        LocalDateTime nuevaSalida = LocalDateTime.parse(viaje.getFecha() + " " + viaje.getHorarioSalida(), formatter);
+        LocalDateTime nuevaLlegada = LocalDateTime.parse(viaje.getFecha() + " " + viaje.getHorarioLlegada(), formatter);
+
+        if (nuevaLlegada.isBefore(nuevaSalida)) {
+            nuevaLlegada = nuevaLlegada.plusDays(1);
+        }
+
+        for (Viaje viajeExistente : vehiculo.getViajeLista()) {
+            LocalDateTime salidaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioSalida(), formatter);
+            LocalDateTime llegadaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioLlegada(), formatter);
+
+            if (llegadaExistente.isBefore(salidaExistente)) {
+                llegadaExistente = llegadaExistente.plusDays(1);
+            }
+
+            boolean seSuperpone = nuevaSalida.isBefore(llegadaExistente) && nuevaLlegada.isAfter(salidaExistente);
+
+            if (seSuperpone) {
+                throw new VehiculoNoDisponibleExcepcion("El vehículo ya está asignado a un viaje que se superpone en el horario.");
+            }
+        }
+
         viaje.setVehiculo(vehiculo);
+        vehiculo.getViajeLista().add(viaje);
+        System.out.println("El Vehículo " + vehiculo + " fue asignado correctamente al viaje: " + viaje);
+        
     }
 
     public Viaje crearUnViaje(String fecha, String horaSalida, String horaLlegada,
@@ -65,8 +92,31 @@ public class ViajeService {
 
     }
 
-    public void asignarVehiculoAUnViaje(Vehiculo vehiculo, Viaje viaje) {
-        //Crear logica de validación
+    public void asignarVehiculoAUnViaje(Vehiculo vehiculo, Viaje viaje) throws VehiculoNoDisponibleExcepcion {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+        LocalDateTime nuevaSalida = LocalDateTime.parse(viaje.getFecha() + " " + viaje.getHorarioSalida(), formatter);
+        LocalDateTime nuevaLlegada = LocalDateTime.parse(viaje.getFecha() + " " + viaje.getHorarioLlegada(), formatter);
+
+        if (nuevaLlegada.isBefore(nuevaSalida)) {
+            nuevaLlegada = nuevaLlegada.plusDays(1);
+        }
+
+        for (Viaje viajeExistente : vehiculo.getViajeLista()) {
+            LocalDateTime salidaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioSalida(), formatter);
+            LocalDateTime llegadaExistente = LocalDateTime.parse(viajeExistente.getFecha() + " " + viajeExistente.getHorarioLlegada(), formatter);
+
+            if (llegadaExistente.isBefore(salidaExistente)) {
+                llegadaExistente = llegadaExistente.plusDays(1);
+            }
+
+            boolean seSuperpone = nuevaSalida.isBefore(llegadaExistente) && nuevaLlegada.isAfter(salidaExistente);
+
+            if (seSuperpone) {
+                throw new VehiculoNoDisponibleExcepcion("El vehículo ya está asignado a un viaje en ese horario.");
+            }
+        }
+
         viaje.setVehiculo(vehiculo);
         vehiculo.getViajeLista().add(viaje);
         System.out.println("El Vehiculo " + vehiculo + "fue asignado correctamente al viaje: " + viaje);
@@ -107,7 +157,7 @@ public class ViajeService {
     }
 
     //2. Planificar un viaje entre dos ciudades
-    public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
+    /*public Viaje planificarViaje(String fecha, String horaSalida, String horaLlegada,
             double precio, double distancia, double costo,
             Ciudad origen, Ciudad destino, Vehiculo vehiculo, Chofer chofer)
             throws ChoferOcupadoExcepcion, CiudadesIgualesExcepcion, ExcesoDePasajerosException {
@@ -167,7 +217,7 @@ public class ViajeService {
         //se suma el viaje a la lista de chofer
         chofer.getViajeLista().add(viaje);
         return viaje;
-    }
+    }*/
 
     //Valida si un colectivo tiene menos de 60 pasajeros y un minibus menos de 20 pasajeros.
     public void validarCapacidadVehiculo(Viaje viaje) throws ExcesoDePasajerosException {
@@ -183,11 +233,13 @@ public class ViajeService {
     }
 
     public void validarYAgregarPasajero(Viaje viaje, Pasajero pasajero) throws ExcesoDePasajerosException {
+        if (viaje.getPasajeroLista() == null) {
+        viaje.setPasajeroLista(new ArrayList<>());
+        }
         int capacidad = viaje.getVehiculo().getCapacidad();
         if (viaje.getPasajeroLista().size() >= capacidad) {
             throw new ExcesoDePasajerosException("El vehículo ya está completo.");
         }
-
         viaje.agregarPasajero(pasajero);
     }
 

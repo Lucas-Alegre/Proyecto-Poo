@@ -40,7 +40,8 @@ public class Viaje {
         this.vehiculo = vehiculo;
         this.chofer = chofer;
         this.reserva = reserva;
-        this.pasajeroLista = pasajeroLista;
+        //this.pasajeroLista = pasajeroLista;
+        this.pasajeroLista = new ArrayList<>();
     }
 
     public Viaje(String fecha, String horarioSalida, String horarioLlegada, double precioPorPasajero, double distanciaEnKilometro, double costoPorKilometro, EstadoDeViajeEnum estadoDeViaje, Ciudad ciudadOrigen, Ciudad ciudadDestino){

@@ -10,6 +10,7 @@ import com.mycompany.transportesa.excepciones.CiudadesIgualesExcepcion;
 import com.mycompany.transportesa.excepciones.VehiculoYaRegistradoExcepcion;
 import com.mycompany.transportesa.excepciones.ChoferYaRegistradoExcepcion;
 import com.mycompany.transportesa.excepciones.ExcesoDePasajerosException;
+import com.mycompany.transportesa.excepciones.VehiculoNoDisponibleExcepcion;
 
 import com.mycompany.transportesa.servicios.*;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.Scanner;
  */
 public class TransporteSa {
 
-    public static void main(String[] args) throws ExcesoDePasajerosException, CiudadesIgualesExcepcion, ChoferOcupadoExcepcion {
+    public static void main(String[] args) throws ExcesoDePasajerosException, CiudadesIgualesExcepcion, ChoferOcupadoExcepcion, VehiculoNoDisponibleExcepcion {
 
         Scanner scanner = new Scanner(System.in);
         // Crear servicios
